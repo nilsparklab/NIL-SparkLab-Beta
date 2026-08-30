@@ -509,6 +509,12 @@
 #elab-v544-simulate-wrap{display:block;width:100%}
 #elab-v544-simulate-wrap button{width:100%;min-height:52px}
 
+/* v11 hardening, Phase 3 — visible keyboard focus state for placed Builder components */
+.canvas-comp-card:focus-visible{
+  outline:2px solid #22d3ee!important;
+  outline-offset:2px;
+  box-shadow:0 0 0 4px rgba(34,211,238,.25);
+}
 /* v5.55 — visible wire layer */
 #builder-canvas{position:relative}
 #builder-wire-svg{
@@ -2626,37 +2632,11 @@ max-width:0!important;max-height:0!important;overflow:hidden!important;
   #elab-scope-panel #scope-wave-readout{width:100%;margin-left:0}
 }
 </style>
-<style id="elab-v538-admin-gate-style">
-#elab-v538-admin-gate{
-  display:none;position:fixed;inset:0;z-index:2147483000;
-  align-items:center;justify-content:center;padding:18px;
-  background:rgba(2,6,23,.88);backdrop-filter:blur(14px);
-}
-#elab-v538-admin-gate.open{display:flex}
-#elab-v538-admin-card{
-  width:min(430px,100%);padding:22px;border-radius:18px;
-  background:#0f172a;color:#e2e8f0;border:1px solid rgba(34,211,238,.28);
-  box-shadow:0 24px 90px rgba(0,0,0,.6);font-family:system-ui,sans-serif;
-}
-#elab-v538-admin-card input{
-  width:100%;box-sizing:border-box;margin:9px 0;padding:11px;
-  border-radius:10px;border:1px solid #334155;background:#020617;
-  color:#e2e8f0;outline:none;
-}
-#elab-v538-admin-card button{
-  padding:9px 13px;border-radius:10px;border:1px solid rgba(34,211,238,.25);
-  background:#082f49;color:#e0f2fe;cursor:pointer;
-}
-#elab-v538-admin-msg{min-height:18px;margin-top:9px;font-size:12px;color:#94a3b8}
-</style>
-<style id="elab-v540-recovery-style">
-#elab-v540-recovery{display:none;margin-top:12px;padding-top:12px;border-top:1px solid #1e293b}
-#elab-v540-recovery.open{display:block}
-#elab-v540-recovery input{width:100%;box-sizing:border-box;margin:7px 0;padding:10px;
- border-radius:9px;border:1px solid #334155;background:#020617;color:#e2e8f0}
-#elab-v540-recovery button{padding:8px 11px;border-radius:9px;border:1px solid #334155;
- background:#0f172a;color:#cbd5e1;cursor:pointer}
-</style>
+<!-- ElectroLab v5.38/v5.40 admin-gate modal + password-recovery UI removed 2026: confirmed
+     unreachable dead code (nothing ever added .open; Login/Cancel buttons had no listeners;
+     a separate static-host lock script additionally force-disabled it). The working,
+     assistant-triggered admin-login implementation (elab-v91-admin-login) is unaffected
+     and unchanged. See NIL_SparkLab_v11_Hardening_Report.md, Phase 2. -->
 <style id="elab-builder-chips-style">
 .elab-builder-chips{
   display:flex;
@@ -2797,7 +2777,7 @@ max-width:0!important;max-height:0!important;overflow:hidden!important;
 </div>
 <div>
 <span class="text-lg font-black tracking-tight text-white flex items-center gap-2">
-            NIL SparkLab <span class="text-[10px] uppercase font-mono px-1.5 py-0.5 bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 rounded">v11.0</span>
+            NIL SparkLab
 </span>
 <p class="text-[10px] text-slate-400 font-medium" data-i18n="tagline">Learn • Build • Simulate • Troubleshoot</p>
 </div>
@@ -5609,6 +5589,11 @@ max-width:0!important;max-height:0!important;overflow:hidden!important;
         div.style.width = "178px";
         div.style.height = "106px";
         div.style.transform = `rotate(${c.rotation || 0}deg)`;
+        // Keyboard accessibility (v11 hardening, Phase 3): make each placed component
+        // reachable/operable via keyboard, in addition to the existing mouse/touch drag.
+        div.tabIndex = 0;
+        div.setAttribute('role', 'group');
+        div.setAttribute('data-elab-kbd-movable', 'true');
 
         let valLabel = '';
         if (c.type === 'resistor') valLabel = `${c.r}Ω`;
@@ -5638,6 +5623,8 @@ max-width:0!important;max-height:0!important;overflow:hidden!important;
         if (c.type === 'mcb') valLabel = c.tripped ? 'TRIPPED' : 'READY';
         if (c.type === 'olr') valLabel = c.tripped ? 'TRIPPED' : 'READY';
         if (c.type === 'mov_varistor') valLabel = 'SURGE CLAMP';
+
+        div.setAttribute('aria-label', `${c.name}${valLabel ? ', ' + valLabel : ''}. Use arrow keys to move, R to rotate, Delete to remove.`);
 
         let visualResponse = `<div class="el-v514-stage el-integrated-component-stage relative" style="width:178px;height:86px;">${componentVisualSvg(c)}`;
         const layout = getVisualTerminalLayout(c);
@@ -5693,6 +5680,40 @@ max-width:0!important;max-height:0!important;overflow:hidden!important;
         cancelWireSelection();
         const st = document.getElementById('builder-status-text');
         if (st) st.innerText = 'Wire selection cancelled.';
+      }
+    });
+
+    // v11 hardening, Phase 3: minimal keyboard-operable path for the Circuit Builder
+    // canvas. Additive only — existing mouse/touch drag (makeDraggableMobile) and all
+    // terminal-click wiring are unchanged. Tab reaches a placed component (tabIndex
+    // set in renderBuilderCanvas); arrow keys nudge it; R rotates it; Delete/Backspace
+    // removes it. Wire terminals were already real <button> elements and were already
+    // natively keyboard-operable (Tab + Enter/Space); this does not change them.
+    document.addEventListener('keydown', (e) => {
+      const el = document.activeElement;
+      if (!el || el.getAttribute('data-elab-kbd-movable') !== 'true') return;
+      const id = el.id;
+      const comp = (typeof builderCanvasComps !== 'undefined') ? builderCanvasComps.find(c => c.id === id) : null;
+      if (!comp) return;
+
+      const step = e.shiftKey ? 30 : 10;
+      let handled = true;
+      if (e.key === 'ArrowLeft') comp.x = Math.max(0, (comp.x || 0) - step);
+      else if (e.key === 'ArrowRight') comp.x = (comp.x || 0) + step;
+      else if (e.key === 'ArrowUp') comp.y = Math.max(0, (comp.y || 0) - step);
+      else if (e.key === 'ArrowDown') comp.y = (comp.y || 0) + step;
+      else if (e.key === 'r' || e.key === 'R') { e.preventDefault(); rotateComponent(id, null); return; }
+      else if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); removeBuilderComp(id); return; }
+      else handled = false;
+
+      if (handled) {
+        e.preventDefault();
+        renderBuilderCanvas();
+        // renderBuilderCanvas() rebuilds every card element, so restore keyboard focus
+        // to the same component instead of silently losing it to the document body.
+        const restored = document.getElementById(id);
+        if (restored) restored.focus();
+        if (isSimRunning) runBuilderSim();
       }
     });
 
@@ -7157,7 +7178,7 @@ max-width:0!important;max-height:0!important;overflow:hidden!important;
       ctx.fillRect(0, 0, rect.width, rect.height);
       ctx.font = 'bold 12px monospace';
       ctx.fillStyle = '#94a3b8';
-      ctx.fillText('NIL SparkLab v11.0 — Circuit Schematic', 14, 20);
+      ctx.fillText('NIL SparkLab — Circuit Schematic', 14, 20);
 
       builderWires.forEach(w => {
         const p1 = getTerminalCenter(w.from.compId, w.from.term), p2 = getTerminalCenter(w.to.compId, w.to.term);
@@ -11461,7 +11482,7 @@ window.ElectroLabFinalAudit={
 document.addEventListener("DOMContentLoaded",function(){
   refreshStatus();
   var a=window.ElectroLabFinalAudit.run();
-  if(a.passed===a.total)toast("NIL SparkLab v11.0 — Final systems ready");
+  if(a.passed===a.total)toast("NIL SparkLab — Final systems ready");
   else toast("Final build loaded · "+a.passed+"/"+a.total+" modules detected");
 });
 })();
@@ -14805,7 +14826,7 @@ else boot();
   }
   function lockAdmin(){
     if(!isStaticHost()) return;
-    var ids = ["elab-v538-admin-card","elab-v540-recovery","elab-v540-reset","elab-v538-admin-id"];
+    var ids = []; // elab-v538/v540 admin-gate elements removed 2026 (were confirmed dead/unreachable); fetch-interception below is unaffected and still protects any /api/admin/ call
     ids.forEach(function(id){
       var el = document.getElementById(id);
       if(!el) return;
@@ -17911,7 +17932,7 @@ items.forEach(x=>{
 </input></div></div>
 <div id="elab-cam-panel"><div class="elab-modal-card">
 <h3>📷 Circuit from photo</h3>
-<p>Photo upload karo, neeche components Hinglish mein likho (ya auto-suggest edit karo), phir Build.</p>
+<p>Photo is for your own reference only — it is not analyzed. Type the components below (Hinglish is fine, or edit the auto-suggestion), then tap Build.</p>
 <input accept="image/*" capture="environment" id="elab-cam-file" type="file">
 <div id="elab-cam-preview" style="margin:8px 0;text-align:center"></div>
 <textarea id="elab-cam-desc" placeholder="battery, resistor 470, LED series" rows="3"></textarea>
@@ -18827,49 +18848,8 @@ items.forEach(x=>{
   }
 })();
 </script>
-<script id="elab-v540-recovery-engine">
-(function(){
-"use strict";
-function msg(t){const e=document.getElementById("elab-v538-admin-msg");if(e)e.textContent=t;}
-async function openReset(){
- try{
-  const r=await fetch("/api/admin/auth/recovery/session",{credentials:"include",cache:"no-store"});
-  const d=await r.json().catch(()=>({}));
-  if(!r.ok||d.recoveryActive!==true){msg("Recovery verification required.");return;}
-  const card=document.getElementById("elab-v538-admin-card");if(!card)return;
-  let box=document.getElementById("elab-v540-reset");
-  if(!box){
-   box=document.createElement("div");box.id="elab-v540-reset";box.style.cssText="margin-top:12px;padding-top:12px;border-top:1px solid #1e293b";
-   box.innerHTML='<input id="elab-v540-new-password" type="password" autocomplete="new-password" placeholder="New password" style="width:100%;box-sizing:border-box;margin:6px 0;padding:10px;border-radius:9px;border:1px solid #334155;background:#020617;color:#e2e8f0"><input id="elab-v540-new-password2" type="password" autocomplete="new-password" placeholder="Confirm password" style="width:100%;box-sizing:border-box;margin:6px 0;padding:10px;border-radius:9px;border:1px solid #334155;background:#020617;color:#e2e8f0"><button type="button" id="elab-v540-reset-btn">Set new password</button>';
-   card.appendChild(box);
-   document.getElementById("elab-v540-reset-btn").addEventListener("click",async()=>{
-    const a=document.getElementById("elab-v540-new-password").value,b=document.getElementById("elab-v540-new-password2").value;
-    if(a.length<12||a!==b){msg("Password must match and be at least 12 characters.");return;}
-    const r2=await fetch("/api/admin/auth/reset-password",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify({newPassword:a})});
-    const d2=await r2.json().catch(()=>({}));
-    if(r2.ok&&d2.passwordReset===true){msg("Password changed successfully.");document.getElementById("elab-v540-new-password").value="";document.getElementById("elab-v540-new-password2").value="";}else msg("Password reset failed.");
-   });
-  }
- }catch(e){msg("Recovery service unavailable.");}
-}
-async function recover(){
- const p=(document.getElementById("elab-v540-recovery-phrase")?.value||"").trim().toLowerCase();
- const e=(document.getElementById("elab-v540-recovery-email")?.value||"").trim();
- if(!p&&!e){msg("Enter the recovery phrase or recovery email.");return;}
- msg("Verifying recovery…");
- try{
-  const r=await fetch("/api/admin/auth/recover",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify({adminId:(document.getElementById("elab-v538-admin-id")?.value||"admin593").trim(),recoveryPhrase:p||null,recoveryEmail:e||null})});
-  const d=await r.json().catch(()=>({}));
-  if(r.ok&&d.recoveryStarted===true){msg("Recovery verified. Create a new password.");openReset();}else msg("Recovery verification failed.");
- }catch(e2){msg("Recovery service unavailable.");}
-}
-document.addEventListener("DOMContentLoaded",()=>{
- document.getElementById("elab-v540-forgot")?.addEventListener("click",()=>{const b=document.getElementById("elab-v540-recovery");if(b)b.style.display="block";});
- document.getElementById("elab-v540-recovery-cancel")?.addEventListener("click",()=>{const b=document.getElementById("elab-v540-recovery");if(b)b.style.display="none";});
- document.getElementById("elab-v540-recovery-continue")?.addEventListener("click",recover);
-});
-})();
-</script>
+<!-- elab-v540-recovery-engine removed 2026: supported only the now-removed elab-v538
+     admin-gate modal (password recovery UI), which was confirmed unreachable. -->
 <!-- ================================================================
      ElectroLab v6.7 — Unified Engineering Upgrade
      1 Architecture cleanup / diagnostics
@@ -24559,35 +24539,6 @@ new MutationObserver(bind).observe(document.documentElement,{childList:true,subt
   });
 })();
 </script>
-<div aria-hidden="true" id="elab-v538-admin-gate">
-<div aria-labelledby="elab-v538-admin-title" aria-modal="true" id="elab-v538-admin-card" role="dialog">
-<h2 id="elab-v538-admin-title" style="margin:0 0 6px">Admin Login</h2>
-<div style="font-size:12px;color:#94a3b8">
-      Admin access only. Authentication is verified by the server.
-    </div>
-<input aria-label="Admin ID" autocomplete="username" id="elab-v538-admin-id" placeholder="Admin ID" type="text"/>
-<input aria-label="Password" autocomplete="current-password" id="elab-v538-admin-password" placeholder="Password" type="password"/>
-<div style="display:flex;gap:8px;margin-top:5px">
-<button id="elab-v538-admin-login" type="button">Login</button>
-<button id="elab-v538-admin-cancel" type="button">Cancel</button>
-</div>
-<div aria-live="polite" id="elab-v538-admin-msg"></div>
-<button id="elab-v540-forgot" style="margin-top:7px;background:transparent;border:0;color:#67e8f9;padding-left:0" type="button">
-      Forgot password?
-    </button>
-<div aria-hidden="true" id="elab-v540-recovery" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid #1e293b">
-<div style="font-size:12px;color:#94a3b8;margin-bottom:5px">Recovery: use your recovery phrase or recovery email.</div>
-<input aria-label="Recovery phrase" autocomplete="off" id="elab-v540-recovery-phrase" placeholder="Recovery phrase" type="password"/>
-<input aria-label="Recovery email" autocomplete="email" id="elab-v540-recovery-email" placeholder="Recovery email" type="email"/>
-<div style="display:flex;gap:7px">
-<button id="elab-v540-recovery-continue" type="button">Continue</button>
-<button id="elab-v540-recovery-cancel" type="button">Cancel</button>
-</div>
-</div>
-</div>
-</div>
-</body>
-</html>
 <!-- ===== ElectroLab v10.22 — Diagram Learn → Build → Simulate Workflow ===== -->
 <style id="elab-v1022-diagram-workflow-style">
 #elab-v1022-diagram-library{position:fixed;inset:0;z-index:2147483646;display:flex;align-items:center;justify-content:center;padding:10px;background:rgba(2,6,23,.94)}
@@ -25450,3 +25401,5 @@ new MutationObserver(bind).observe(document.documentElement,{childList:true,subt
 
 })();
 </script>
+</body>
+</html>
