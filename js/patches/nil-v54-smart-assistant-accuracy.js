@@ -1,0 +1,27 @@
+
+(function(){'use strict';
+ function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+ function state(){try{return window.NILSparkLabCircuitStateBridge&&window.NILSparkLabCircuitStateBridge.getState?window.NILSparkLabCircuitStateBridge.getState():{components:[],wires:[],types:[],counts:{}};}catch(_){return {components:[],wires:[],types:[],counts:{}}}}
+ function sim(){try{return window.NILSparkLabSimulationBridge&&window.NILSparkLabSimulationBridge.getLatest?window.NILSparkLabSimulationBridge.getLatest():null;}catch(_){return null}}
+ function finite(v){v=Number(v);return Number.isFinite(v)?v:null}
+ function confidence(level,title,detail){return {level:level,title:title,detail:detail};}
+ function analyze(){var st=state(),cs=Array.isArray(st.components)?st.components:[],counts=st.counts||{},types=st.types||[],out=[],latest=sim();
+   if(!cs.length)return {items:[confidence('high','No circuit data','Canvas empty hai; component-specific diagnosis abhi possible nahi.')],telemetry:!!latest,score:0};
+   var source=['battery','source','dc_source','ac_source','generator','voltage_source'].some(function(x){return counts[x]>0||types.indexOf(x)>=0});
+   if(!source)out.push(confidence('medium','Source detection needs review','Common source types detect nahi huye. Agar external/instrument source use ho raha hai to ye heuristic warning false positive ho sakti hai.'));
+   var led=(counts.led||0)>0,limit=(counts.resistor||0)>0||(counts.potentiometer||0)>0||(counts.current_source||0)>0;
+   if(led&&!limit)out.push(confidence('high','LED current limiting not confirmed','LED detect hui, lekin available component metadata mein current-limiting element confirm nahi hua. Actual series path verify karo.'));
+   var wires=Array.isArray(st.wires)?st.wires.length:0;
+   if(cs.length>1&&wires===0)out.push(confidence('medium','No wires detected','Multiple components hain but builder wire data empty hai. Connection model/state verify karo.'));
+   cs.forEach(function(c,i){var t=String(c&&(c.type||c.kind||c.componentType)||'').toLowerCase();if(t==='resistor'){var r=null;['resistance','value','ohms','r'].some(function(k){var n=finite(c&&c[k]);if(n!==null){r=n;return true}return false});if(r!==null&&r<=0)out.push(confidence('high','Invalid resistor value #'+(i+1),'Positive, non-zero resistance required; configured value '+r+' Ω hai.'));if(r!==null&&r>0&&r<10)out.push(confidence('low','Low resistance needs rating check','Configured '+r+' Ω automatically unsafe nahi hai; actual simulation current/power aur component rating verify karo.'));}});
+   if(latest){var h=String(latest.health||latest.status||'').toLowerCase(),v=finite(latest.voltage),i=finite(latest.current),p=finite(latest.power);if(/fail|error|invalid/.test(h))out.push(confidence('high','Simulation reported a problem','Latest simulation status: '+String(latest.health||latest.status)+'. Numerical conclusions ko reliable maan-ne se pehle simulation issue resolve karo.'));if(v===null&&i===null&&p===null)out.push(confidence('low','Telemetry incomplete','Simulation result mila, lekin usable V/I/P fields available nahi hain; numerical rating analysis limited hai.'));if(i!==null&&i>1)out.push(confidence('medium','High-current rating review','Latest current '+i.toFixed(3)+' A hai. Ye automatic fault nahi; source limit, wire and component ratings verify karo.'));}
+   var seen={},clean=[];out.forEach(function(x){var k=x.level+'|'+x.title+'|'+x.detail;if(!seen[k]){seen[k]=1;clean.push(x)}});
+   var high=clean.filter(function(x){return x.level==='high'}).length,med=clean.filter(function(x){return x.level==='medium'}).length,score=Math.max(0,100-high*35-med*15-(clean.length-high-med)*5);
+   return {items:clean,telemetry:!!latest,score:score};
+ }
+ function render(){var r=analyze(),host=document.getElementById('elab-smart-content');if(!host)return;var html='<div class="nil-v54-card"><h4>🎯 Accuracy Review</h4><div><b>Confidence-aware score: '+r.score+'/100</b><br>Telemetry: '+(r.telemetry?'available':'not available')+'</div><div style="margin-top:8px">';if(!r.items.length)html+='✅ Current accuracy layer found no rule-based issue. This is not a hardware safety certification.';else html+=r.items.map(function(x){return '<div class="nil-v54-item nil-v54-'+x.level+'"><b>'+esc(x.level.toUpperCase())+' · '+esc(x.title)+'</b><br>'+esc(x.detail)+'</div>'}).join('');html+='</div><div style="margin-top:8px;color:#94a3b8">Rule policy: confirmed data → high confidence; heuristic topology checks → medium/low confidence; missing telemetry never invents numbers.</div></div>';host.innerHTML=html;}
+ function install(){var chips=document.getElementById('elab-sa-chips');if(!chips||document.getElementById('nil-v54-tools'))return;var d=document.createElement('div');d.id='nil-v54-tools';d.innerHTML='<button class="sa-v54-tool" data-nil-v54="accuracy" type="button">🎯 Accuracy Review</button>';chips.parentNode.insertBefore(d,chips.nextSibling);}
+ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-nil-v54]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();render();},true);
+ document.addEventListener('DOMContentLoaded',function(){setTimeout(install,320)});document.addEventListener('click',function(){setTimeout(install,0)},true);
+ window.NILSparkLabAssistantAccuracyV54=Object.freeze({version:'v54',analyze:analyze});
+})();
