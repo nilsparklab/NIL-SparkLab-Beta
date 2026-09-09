@@ -1,0 +1,30 @@
+
+/* Merged v5.18+v5.19+v5.21+v5.24+v5.25+v5.26+v5.27+v5.29: internal build/
+   security/runtime diagnostics and badge counters are owner/developer data,
+   never normal user UI (superseded duplicate override chain consolidated).
+   Security enforcement itself remains active. */
+#elab-build-audit,#elab-build-audit-status,#elab-security-status,
+#elab-runtime-status,#elab-runtime-audit,#elab-ready-status,#elab-status-bar,
+#elab-security-badge,#elab-badge-counter,#elab-badges,#elab-badges-pill,
+#elab-badges-modal,#elab-badge-toast,#elab-v575-status,#elab-v599-security-badge,
+#elab-v600-security-badge,#elab-v569-audit,#elab-v81-ready-status,
+.elab-build-audit,.elab-audit-status,.elab-security-status,.elab-security-badge,
+.elab-runtime-status,.elab-ready-status,.elab-status-bar,.elab-badge-counter,
+.elab-badges,.elab-status-card,.elab-audit-card,.elab-security-card,
+.elab-internal-status,.elab-dev-status,.elab-v569-audit,.elab-v575-status,
+[data-internal-status],[data-build-audit],[data-security-status],
+[data-runtime-status],[data-status="build-audit"],[data-status="security"],
+[data-status="runtime"],[data-status="ready"],[data-status="audit"],
+[data-role="internal-status"]{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  width:0!important;
+  height:0!important;
+  max-width:0!important;
+  max-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+}

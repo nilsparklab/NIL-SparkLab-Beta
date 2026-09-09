@@ -1,0 +1,233 @@
+
+/* ============================================================
+   NIL SparkLab v101 — Smart Assistant professional polish
+   Scope: Smart Assistant launcher + panel ONLY.
+   Goal: keep the cyan/navy identity but read as a refined,
+   modern product surface instead of a blocky terminal skin.
+   Visual layer only — no structural/JS changes.
+   ============================================================ */
+:root{
+  --sa101-radius-lg:16px;
+  --sa101-radius-md:12px;
+  --sa101-radius-sm:10px;
+  --sa101-border:rgba(148,163,184,.16);
+  --sa101-border-hover:rgba(34,211,238,.5);
+  --sa101-surface:#0f1729;
+  --sa101-surface-2:#141f36;
+  --sa101-cyan:#22d3ee;
+  --sa101-cyan-bright:#67e8f9;
+  --sa101-text:#e8edf5;
+  --sa101-text-dim:#94a3b8;
+  --sa101-text-faint:#5b6b84;
+  --sa101-sans:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+
+/* ---------- Launcher: clean floating action button ---------- */
+#elab-smart-assistant-btn{
+  background:linear-gradient(155deg,#1a3a52,#0a1120 65%) !important;
+  border:1px solid rgba(34,211,238,.55) !important;
+  border-radius:50% !important;
+  box-shadow:0 10px 28px rgba(2,6,23,.55),0 0 0 1px rgba(34,211,238,.08) !important;
+  text-shadow:none !important;
+  font-family:var(--sa101-sans) !important;
+}
+#elab-smart-assistant-btn::after{display:none !important}
+
+/* ---------- Panel chassis: soft elevated card, no scanline grid ---------- */
+#elab-smart-panel{
+  background:linear-gradient(165deg,var(--sa101-surface-2),#0a0f1c 75%) !important;
+  border:1px solid var(--sa101-border) !important;
+  border-radius:var(--sa101-radius-lg) !important;
+  box-shadow:0 24px 56px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,238,.06),0 1px 0 rgba(255,255,255,.04) inset !important;
+  padding:16px !important;
+}
+#elab-smart-panel::-webkit-scrollbar-thumb{border-radius:8px !important;background:rgba(34,211,238,.4) !important}
+
+/* ---------- Title bar ---------- */
+#elab-smart-panel .sa-title{
+  font-family:var(--sa101-sans) !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  color:var(--sa101-text) !important;
+  letter-spacing:0 !important;
+  text-shadow:none !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:7px !important;
+  border-bottom:1px solid var(--sa101-border) !important;
+  padding-bottom:12px !important;
+  margin-bottom:12px !important;
+}
+#elab-smart-panel .sa-title::before{
+  background:var(--sa101-cyan) !important;
+  box-shadow:0 0 8px 1px rgba(34,211,238,.7) !important;
+  width:6px !important;height:6px !important;
+}
+#elab-smart-panel .sa-title .pro-tag{
+  background:rgba(34,211,238,.14) !important;
+  color:var(--sa101-cyan-bright) !important;
+  border-radius:6px !important;
+  padding:2px 6px !important;
+  letter-spacing:.4px !important;
+}
+#elab-smart-close{
+  top:14px !important;right:14px !important;
+  width:26px !important;height:26px !important;
+  display:flex !important;align-items:center !important;justify-content:center !important;
+  border-radius:50% !important;
+  font-size:16px !important;
+  transition:background .15s ease,color .15s ease !important;
+}
+#elab-smart-close:hover{background:rgba(148,163,184,.14) !important}
+
+/* ---------- Ask row ---------- */
+#elab-smart-panel .sa-ask-row{gap:8px !important}
+.sa-ask-row input{
+  height:40px !important;
+  padding:0 13px !important;
+  border-radius:var(--sa101-radius-sm) !important;
+  background:#0a0f1c !important;
+  border:1px solid var(--sa101-border) !important;
+  font-size:13px !important;
+}
+.sa-ask-row input:focus{
+  border-color:var(--sa101-cyan) !important;
+  box-shadow:0 0 0 3px rgba(34,211,238,.14) !important;
+}
+#elab-smart-panel .elab-assistant-mic{
+  width:40px !important;height:40px !important;
+  border-radius:var(--sa101-radius-sm) !important;
+  background:#0a0f1c !important;
+  border:1px solid var(--sa101-border) !important;
+  font-size:15px !important;
+}
+#elab-smart-panel .elab-assistant-mic:hover{
+  border-color:var(--sa101-border-hover) !important;
+  box-shadow:none !important;
+}
+#elab-sa-ask{
+  height:40px !important;
+  padding:0 16px !important;
+  border-radius:var(--sa101-radius-sm) !important;
+  background:linear-gradient(155deg,var(--sa101-cyan-bright),#0891b2) !important;
+  color:#04141a !important;
+  font-family:var(--sa101-sans) !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  box-shadow:0 4px 14px rgba(34,211,238,.25) !important;
+}
+#elab-sa-ask:hover{filter:brightness(1.06) !important;box-shadow:0 6px 18px rgba(34,211,238,.35) !important}
+
+/* ---------- Tools toggle + menu ---------- */
+.sa-tools-toggle{
+  height:40px !important;
+  padding:0 14px !important;
+  border-radius:var(--sa101-radius-sm) !important;
+  background:#0a0f1c !important;
+  color:var(--sa101-text-dim) !important;
+  font-family:var(--sa101-sans) !important;
+  font-size:12.5px !important;
+  font-weight:600 !important;
+}
+.sa-tools-toggle[aria-expanded="true"]{
+  color:var(--sa101-cyan-bright) !important;border-color:var(--sa101-border-hover) !important;
+}
+.sa-tools-menu{
+  background:var(--sa101-surface) !important;
+  border:1px solid var(--sa101-border) !important;
+  border-radius:var(--sa101-radius-md) !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.45) !important;
+  padding:6px !important;
+  gap:4px !important;
+}
+.sa-tools-menu button{
+  border:1px solid transparent !important;
+  border-top:1px solid transparent !important;
+  border-radius:8px !important;
+  font-family:var(--sa101-sans) !important;
+  font-weight:500 !important;
+  padding:9px 10px !important;
+}
+.sa-tools-menu button:hover{
+  background:rgba(34,211,238,.1) !important;border-color:transparent !important;color:var(--sa101-text) !important;
+}
+.sa-ask-row #elab-sa-web{
+  border-radius:var(--sa101-radius-sm) !important;font-family:var(--sa101-sans) !important;
+}
+
+#elab-smart-panel .sa-ask-row #elab-sa-ask.sa-mode-active,
+#elab-smart-panel .sa-tools-menu button.sa-mode-active{
+  box-shadow:inset 0 0 0 1px var(--sa101-cyan) !important;
+  border-radius:8px !important;
+}
+
+/* ---------- Suggestions header ---------- */
+#elab-smart-panel .sa-suggestions-toggle{
+  border-radius:var(--sa101-radius-sm) !important;
+  background:rgba(255,255,255,.02) !important;
+  border-color:var(--sa101-border) !important;
+  font-family:var(--sa101-sans) !important;
+  font-weight:600 !important;
+}
+
+/* ---------- Quick-action chips: refined pills ---------- */
+#elab-smart-panel .sa-chip,
+.sa-chip{
+  border-radius:999px !important;
+  font-family:var(--sa101-sans) !important;
+  font-weight:500 !important;
+  padding-left:18px !important;
+  background:rgba(255,255,255,.03) !important;
+}
+#elab-smart-panel .sa-chip::before,
+.sa-chip::before{left:8px !important;width:4px !important;height:4px !important}
+#elab-smart-panel .sa-chip:hover,
+.sa-chip:hover{
+  background:rgba(34,211,238,.1) !important;
+  border-color:var(--sa101-border-hover) !important;
+}
+
+/* ---------- Info cards: unified rounded surface ---------- */
+.sa-tip,
+.sa-coach,
+.sa-answer,
+.sa-v48-card,
+.nil-v49-card,
+.nil-v51-card,
+.nil-v54-card,
+.nil-v56-card,
+.sa-path{
+  background:var(--sa101-surface) !important;
+  border:1px solid var(--sa101-border) !important;
+  border-left:3px solid var(--sa101-cyan) !important;
+  border-radius:var(--sa101-radius-md) !important;
+  font-family:var(--sa101-sans) !important;
+  line-height:1.55 !important;
+  box-shadow:0 6px 18px rgba(0,0,0,.25) !important;
+}
+.sa-tip b,.sa-coach b,.sa-answer b,
+.sa-v48-card h4,.nil-v56-card h4{color:var(--sa101-cyan-bright) !important}
+
+/* ---------- Versioned tool-chip buttons ---------- */
+.sa-v48-tool,
+#nil-v49-tools .sa-v49-tool,
+#nil-v51-tools .sa-v51-tool,
+#nil-v54-tools .sa-v54-tool,
+.sa-v56-tool,
+.nil-v56-actions button{
+  border-radius:999px !important;
+  font-family:var(--sa101-sans) !important;
+  font-weight:500 !important;
+}
+
+/* ---------- Web / diagram result cards ---------- */
+.sa-web-item,.sa-vision-box,.sa-diagram-wrap,.sa-diagram-netlist,.sa-diagram-confirm{
+  border-radius:var(--sa101-radius-md) !important;
+}
+.sa-web-item .title{font-family:var(--sa101-sans) !important}
+.sa-diagram-actions button,.sa-tools-menu button,.sa-intent-badge{font-family:var(--sa101-sans) !important}
+
+/* ---------- Action button ---------- */
+.sa-action{
+  border-radius:999px !important;font-family:var(--sa101-sans) !important;font-weight:600 !important;
+}

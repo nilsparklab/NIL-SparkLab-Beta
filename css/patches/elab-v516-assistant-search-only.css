@@ -1,0 +1,34 @@
+
+/* Merged v5.16+v5.17: Assistant search/mic/build bar are owned by Smart
+   Assistant only (superseded duplicate override chain consolidated). */
+body > #elab-sa-input,
+body > .sa-ask-row,
+#elab-smart-search,
+#elab-smart-input-float,
+#elab-nl-bar,
+#elab-nl-input,
+#elab-nl-go,
+.elab-nl-bar,
+.elab-floating-search,
+.elab-assistant-search-float{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+/* Keep search controls inside the Assistant panel; never fixed/floating. */
+#elab-smart-panel .sa-ask-row{
+  position:relative !important;
+  inset:auto !important;
+  width:100% !important;
+  max-width:none !important;
+  margin:0 0 8px !important;
+  transform:none !important;
+}
+#elab-smart-panel #elab-sa-input{
+  position:relative !important;
+  inset:auto !important;
+  width:100% !important;
+  min-width:0 !important;
+  transform:none !important;
+}

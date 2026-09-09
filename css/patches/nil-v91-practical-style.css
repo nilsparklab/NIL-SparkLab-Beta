@@ -1,0 +1,5 @@
+
+.nil-practical-card{margin-top:8px;padding:11px;border:1px solid rgba(34,211,238,.25);border-radius:12px;background:rgba(15,23,42,.9);color:#e2e8f0;font-size:12px}
+.nil-practical-head{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.nil-practical-head span{font-size:9px;color:#94a3b8}
+.nil-practical-section{margin-top:9px;padding-top:7px;border-top:1px solid rgba(148,163,184,.14);line-height:1.45}.nil-practical-section ul{margin:4px 0 0 18px;padding:0}.nil-practical-section li{margin:3px 0}
+.nil-practical-viva{margin-top:6px;padding:6px;border-radius:8px;background:rgba(2,6,23,.55)}.nil-practical-viva div{margin-top:3px;color:#cbd5e1}

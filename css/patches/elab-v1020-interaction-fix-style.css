@@ -1,0 +1,14 @@
+
+#elab-smart-panel .sa-chip,
+#elab-smart-panel #elab-sa-ask,
+#elab-smart-panel #elab-assistant-mic{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#elab-assistant-mic.is-listening{animation:elabMicPulse 1s ease-in-out infinite}
+@keyframes elabMicPulse{50%{transform:scale(1.06);filter:drop-shadow(0 0 8px rgba(34,211,238,.65))}}
+#elab-v1020-diagram-modal{position:fixed;inset:0;z-index:2147483645;display:none;align-items:center;justify-content:center;padding:14px;background:rgba(2,6,23,.90)}
+#elab-v1020-diagram-modal .box{width:min(900px,96vw);max-height:92vh;overflow:auto;background:#fff;color:#0f172a;border-radius:16px;padding:16px;font-family:Arial,sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+#elab-v1020-diagram-modal .svg-holder{overflow:auto;border:1px solid #cbd5e1;border-radius:10px;background:#fff}
+#elab-v1020-diagram-modal svg{display:block;width:100%;height:auto;min-width:320px;background:#fff}
+#elab-v1020-diagram-modal .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#elab-v1020-diagram-modal button{padding:9px 14px;border:1px solid #94a3b8;border-radius:8px;background:#fff;color:#0f172a;cursor:pointer}
+#elab-v1020-status{margin-top:6px;min-height:16px;font:12px/1.4 Arial,sans-serif;color:#67e8f9}
+#elab-v1020-status.err{color:#fca5a5}

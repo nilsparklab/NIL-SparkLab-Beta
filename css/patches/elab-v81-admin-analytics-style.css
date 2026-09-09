@@ -1,0 +1,58 @@
+
+  #elab-v81-admin-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    display: none;
+    background: rgba(2, 6, 23, .82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 16px;
+    overflow: auto;
+  }
+  #elab-v81-admin-panel.open { display: block; }
+  #elab-v81-admin-card {
+    max-width: 980px;
+    margin: 5vh auto;
+    background: rgba(15,23,42,.96);
+    border: 1px solid rgba(34,211,238,.24);
+    border-radius: 18px;
+    box-shadow: 0 24px 80px rgba(0,0,0,.5);
+    color: #e2e8f0;
+    padding: 20px;
+    font-family: system-ui, sans-serif;
+  }
+  #elab-v81-admin-card h2 { margin: 0 0 6px; }
+  .elab-v81-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .elab-v81-stat {
+    border: 1px solid rgba(148,163,184,.18);
+    border-radius: 12px;
+    padding: 12px;
+    background: rgba(30,41,59,.65);
+  }
+  .elab-v81-stat b { display:block; font-size: 22px; margin-top: 4px; }
+  #elab-v81-events {
+    max-height: 330px;
+    overflow: auto;
+    border: 1px solid rgba(148,163,184,.15);
+    border-radius: 12px;
+  }
+  .elab-v81-event {
+    padding: 9px 11px;
+    border-bottom: 1px solid rgba(148,163,184,.1);
+    font-size: 12px;
+  }
+  .elab-v81-actions { display:flex; gap:8px; flex-wrap:wrap; }
+  .elab-v81-actions button {
+    border:1px solid rgba(34,211,238,.25);
+    background:rgba(8,47,73,.65);
+    color:#e0f2fe;
+    border-radius:10px;
+    padding:8px 11px;
+    cursor:pointer;
+  }

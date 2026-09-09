@@ -1,0 +1,14 @@
+
+.sa-diagram-confirm{margin-top:8px;padding:8px;border-radius:10px;background:#0f172a;border:1px solid #1e293b}
+.sa-diagram-confirm .cdc-title{font-size:10px;font-weight:800;color:#67e8f9;margin-bottom:6px}
+.sa-diagram-confirm .cdc-chips{display:flex;flex-wrap:wrap;gap:5px}
+.sa-diagram-confirm .cdc-chip{
+  font-size:9px;font-weight:700;padding:5px 8px;border-radius:999px;cursor:pointer;
+  border:1px solid #334155;background:#020617;color:#94a3b8;
+}
+.sa-diagram-confirm .cdc-chip.on{border-color:rgba(34,211,238,.45);color:#67e8f9;background:rgba(8,145,178,.12)}
+.sa-diagram-confirm .cdc-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sa-diagram-confirm .cdc-actions button{
+  font-size:10px;font-weight:800;padding:6px 10px;border-radius:8px;cursor:pointer;
+  border:1px solid rgba(34,211,238,.35);background:rgba(8,145,178,.15);color:#67e8f9
+}

@@ -1,0 +1,16 @@
+
+/* Merged v5.11+v5.12+v5.13+v5.15: Report/QR/share tools are not part of the
+   normal user workspace (superseded duplicate override chain consolidated). */
+#elab-report-panel,#elab-qr-panel,#elab-share-qr-panel,#elab-report-modal,
+#elab-lab-report,#elab-share-qr,#elab-qr-modal,#elab-fab-report,#elab-fab-qr,
+#elab-fab-share,#elab-fab-tools,#elab-report-fab,#elab-qr-fab,#elab-share-fab,
+#elab-report-print,#elab-report-copy,#elab-qr-img,#elab-qr-hint,#elab-qr-copy,
+.elab-report-panel,.elab-qr-panel,.elab-share-qr-panel,.elab-report-modal,
+.elab-qr-modal,.elab-floating-report,.elab-floating-qr,.elab-floating-share,
+.elab-floating-tools,
+[data-action="lab-report"],[data-action="share-qr"],[data-action="share"],
+[data-tool="lab-report"],[data-tool="share-qr"]{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}

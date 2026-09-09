@@ -1,0 +1,9 @@
+
+.nil-agent-card{margin-top:8px;padding:11px;border:1px solid rgba(167,139,250,.3);border-radius:12px;background:rgba(15,23,42,.92);color:#e2e8f0;font-size:12px}
+.nil-agent-head{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.nil-agent-head span{font-size:9px;color:#a78bfa}
+.nil-agent-goal{margin-top:7px;padding:7px;border-radius:8px;background:rgba(2,6,23,.7)}
+.nil-agent-steps{display:grid;gap:6px;margin-top:8px}.nil-agent-step{display:flex;gap:8px;align-items:flex-start;padding:7px;border-radius:8px;background:rgba(2,6,23,.5)}
+.nil-agent-step>span{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:rgba(167,139,250,.2);font-size:10px}
+.nil-agent-step small{display:block;margin-top:2px;color:#94a3b8;line-height:1.35}
+.nil-agent-approval,.nil-agent-safe{margin-top:8px;padding:7px;border-top:1px solid rgba(148,163,184,.15);font-size:10px;color:#cbd5e1}
+.nil-agent-cancel{margin-top:8px;border:1px solid rgba(148,163,184,.25);border-radius:8px;padding:5px 8px;background:transparent;color:#cbd5e1;cursor:pointer}

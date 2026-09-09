@@ -1,0 +1,7 @@
+
+#nil-v49-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:7px}
+#nil-v49-tools .sa-v49-tool{border:1px solid rgba(34,211,238,.22);background:rgba(15,23,42,.78);color:#dbeafe;border-radius:10px;padding:7px 8px;font-size:10px;line-height:1.15;text-align:left}
+#nil-v49-tools .sa-v49-tool:hover{border-color:rgba(34,211,238,.52);box-shadow:0 0 14px rgba(34,211,238,.12)}
+.nil-v49-card{margin-top:8px;padding:10px;border-radius:12px;border:1px solid rgba(34,211,238,.18);background:rgba(2,6,23,.72);font-size:11px;line-height:1.45;color:#dbeafe}
+.nil-v49-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}.nil-v49-metric{padding:7px;border-radius:9px;background:rgba(15,23,42,.8);border:1px solid rgba(148,163,184,.12)}.nil-v49-metric b{display:block;font-size:14px;color:#67e8f9}.nil-v49-note{margin-top:7px;color:#cbd5e1}
+@media(max-width:420px){#nil-v49-tools{grid-template-columns:1fr 1fr}#nil-v49-tools .sa-v49-tool{font-size:9px}.nil-v49-metrics{gap:4px}.nil-v49-metric{padding:6px;font-size:9px}}

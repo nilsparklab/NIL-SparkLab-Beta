@@ -1,0 +1,11 @@
+
+/* v102: off-screen rendering cost cut for the two long, real card grids
+   in this app — the 198+ component library grid (#components-grid) and
+   the Study/Lessons topic grid (.nil-study-card). content-visibility:auto
+   skips layout/paint work for cards currently scrolled out of view;
+   contain-intrinsic-size reserves an estimated placeholder height so the
+   scrollbar/page doesn't jump as cards enter/exit the viewport. Both
+   properties are simply ignored by browsers that don't support them
+   (safe no-op), so this is a pure progressive enhancement. */
+#components-grid > div{content-visibility:auto;contain-intrinsic-size:auto 260px;}
+.nil-study-card{content-visibility:auto;contain-intrinsic-size:auto 220px;}

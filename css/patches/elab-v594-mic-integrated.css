@@ -1,0 +1,47 @@
+
+/* v5.4: microphone belongs inside Smart Assistant search, not as a floating control */
+#elab-smart-voice-btn,
+#elab-fab-mic,
+.elab-floating-mic,
+.elab-mic-fab{
+  display:none !important;
+}
+/* The microphone is intentionally visible inside Smart Assistant. */
+#elab-smart-panel #elab-assistant-mic{
+  display:grid !important;
+}
+#elab-smart-panel .sa-ask-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+#elab-smart-panel .sa-ask-row input,
+#elab-smart-panel .sa-ask-row textarea{
+  flex:1 1 auto;
+  min-width:0;
+}
+#elab-smart-panel .elab-assistant-mic{
+  flex:0 0 38px;
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  border:1px solid rgba(34,211,238,.28);
+  background:rgba(15,23,42,.88);
+  color:#9eefff;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:18px;
+  line-height:1;
+}
+#elab-smart-panel .elab-assistant-mic:hover{
+  box-shadow:0 0 16px rgba(34,211,238,.22);
+}
+@media(max-width:480px){
+  #elab-smart-panel .elab-assistant-mic{
+    flex-basis:36px;
+    width:36px;
+    height:36px;
+    border-radius:10px;
+  }
+}

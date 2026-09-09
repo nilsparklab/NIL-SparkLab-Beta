@@ -1,0 +1,19 @@
+
+.sa-diagram-badge.review{
+  background:rgba(248,113,113,.12);color:#fca5a5;border:1px solid rgba(248,113,113,.35);
+}
+.sa-diagram-badge.ai{
+  background:rgba(167,139,250,.12);color:#c4b5fd;border:1px solid rgba(167,139,250,.35);
+}
+.sa-diagram-validate{
+  margin-top:6px;font-size:9px;line-height:1.4;color:#94a3b8;
+}
+.sa-diagram-validate li{margin-left:12px;list-style:disc}
+.sa-diagram-validate .ok{color:#6ee7b7}
+.sa-diagram-validate .warn{color:#fde68a}
+.sa-diagram-validate .err{color:#fca5a5}
+.sa-vision-box{
+  margin-top:8px;padding:8px;border-radius:10px;border:1px dashed #334155;background:#0f172a;
+}
+.sa-vision-box input[type=file]{font-size:10px;color:#94a3b8;width:100%}
+.sa-vision-box .sv-hint{font-size:9px;color:#64748b;margin-top:4px}

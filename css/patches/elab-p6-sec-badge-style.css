@@ -1,0 +1,11 @@
+
+#elab-sec-badge{display:none!important;
+  position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:14000;
+  font:700 10px ui-monospace,monospace;padding:6px 10px;border-radius:999px;
+  background:rgba(2,6,23,.92);border:1px solid rgba(34,211,238,.35);color:#67e8f9;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer;max-width:94vw;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+#elab-sec-badge.warn{border-color:rgba(250,204,21,.45);color:#fde68a}
+#elab-sec-badge.bad{border-color:rgba(248,113,113,.5);color:#fca5a5}
+#elab-sec-badge.ok{border-color:rgba(52,211,153,.45);color:#6ee7b7}

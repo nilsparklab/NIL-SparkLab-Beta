@@ -1,0 +1,6 @@
+
+#elab-v1pro4-diagrams{margin-top:12px;padding:14px;border:1px solid rgba(34,211,238,.18);border-radius:14px;background:rgba(2,6,23,.25)}
+.elab-v1pro4-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-top:10px}
+.elab-v1pro4-item{padding:10px;border:1px solid rgba(148,163,184,.12);border-radius:10px;font-size:12px}
+.elab-v1pro4-item b{display:block;margin-bottom:4px}.elab-v1pro4-state{font-size:11px;opacity:.72}
+.elab-v1pro4-note{margin-top:10px;font-size:11px;line-height:1.5;opacity:.7}

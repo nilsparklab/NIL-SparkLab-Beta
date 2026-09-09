@@ -1,0 +1,167 @@
+
+/* v99 — Global UI/UX polish pass. Additive only: refines existing slate/cyan
+   design language (spacing rhythm, motion, focus states, contrast) without
+   introducing a new visual style or touching functional JS hooks. */
+
+/* Crisper text rendering on the dark theme */
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Accessible, consistent focus ring across every interactive element that
+   doesn't already define its own focus-visible treatment */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid #22d3ee!important;
+  outline-offset:2px;
+  border-radius:6px;
+}
+
+/* Skip-to-content link for keyboard/screen-reader users (hidden until focused) */
+.elab-skip-link{
+  position:fixed;top:-48px;left:12px;z-index:999;
+  background:#0891b2;color:#02131a;font-weight:800;font-size:12px;
+  padding:10px 14px;border-radius:0 0 10px 10px;
+  transition:top .18s ease;
+}
+.elab-skip-link:focus{top:0}
+
+/* Header: subtle depth once the page scrolls, purely visual */
+header.elab-scrolled{box-shadow:0 8px 22px rgba(2,6,23,.55)}
+
+/* Perf: drop the header's backdrop-filter while actively scrolling.
+   backdrop-filter on a sticky element forces the browser to recompute the
+   blur every scroll frame — pausing it during motion and restoring it once
+   scrolling settles removes that per-frame cost without any visible change
+   at rest. */
+body.elab-is-scrolling header.sticky{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+/* Nav buttons: smoother hover feedback + underline affordance for the
+   currently active section without altering the existing active-state JS */
+.nav-btn{position:relative;transition:color .15s ease,background-color .15s ease,transform .1s ease}
+.nav-btn:hover{background:rgba(148,163,184,.08)}
+.nav-btn:active{transform:translateY(1px)}
+
+/* Primary/secondary CTA buttons: gentle lift instead of a flat color swap */
+button{transition:transform .12s ease,box-shadow .18s ease,background-color .15s ease,border-color .15s ease,color .15s ease}
+button:active{transform:translateY(1px)}
+#btn-explore-components:hover,#btn-explore-components:focus-visible,
+[data-elab-action="show-builder"]:hover,[data-elab-action="show-builder"]:focus-visible{
+  transform:translateY(-1px);
+}
+
+/* Cards / panels: consistent, restrained hover elevation for genuinely
+   clickable summary cards (component grid, home tiles) — excludes canvas
+   and modal internals which already have bespoke interaction styling */
+.grid > .rounded-xl.border,
+.grid > .rounded-2xl.border{transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+.grid > .rounded-xl.border:hover,
+.grid > .rounded-2xl.border:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(2,6,23,.7)}
+
+/* Mobile menu: fade + slide instead of an instant show/hide */
+#mobile-menu{
+  transition:opacity .16s ease,transform .16s ease;
+  transform:translateY(-4px);
+  opacity:0;
+}
+#mobile-menu:not(.hidden){opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){#mobile-menu{transition:none;transform:none}}
+
+/* Slightly lift low-contrast secondary text for readability on slate-950 */
+.text-slate-500{color:#8a97ab}
+
+/* Links inside prose/body copy get a clear hover affordance */
+main a:not(.nav-btn):not([class*="bg-"]):hover{text-decoration:underline;text-underline-offset:2px}
+
+/* Form controls: consistent rounded, comfortable touch targets */
+input[type="text"],input[type="search"],input[type="number"],input[type="email"],select,textarea{
+  transition:border-color .15s ease,box-shadow .15s ease,background-color .15s ease;
+}
+
+/* Respect reduced-motion globally for the hover/press affordances above */
+@media (prefers-reduced-motion:reduce){
+  .nav-btn,button,.grid > .rounded-xl.border,.grid > .rounded-2xl.border{transition:none!important}
+  .nav-btn:active,button:active{transform:none!important}
+  .grid > .rounded-xl.border:hover,.grid > .rounded-2xl.border:hover{transform:none!important}
+}
+
+/* ============================================================
+   v100 — Visual identity refresh (typography, depth, hero)
+   Additive only: no existing class is removed or renamed, so
+   every data-elab-action / onclick / getElementById hook that
+   the app's JS relies on keeps working exactly as before.
+   ============================================================ */
+
+:root{
+  --nil-display:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --nil-body:'Inter',ui-sans-serif,system-ui,sans-serif;
+}
+
+/* Base body copy reads slightly warmer/cleaner than the default
+   system stack; monospace telemetry (.font-mono) is untouched
+   because a class selector already outranks this element rule. */
+body{font-family:var(--nil-body)}
+
+/* Headings get a distinct technical, geometric face so the page
+   stops reading as generic Tailwind-default type. */
+h1,h2,h3,h4{font-family:var(--nil-display);letter-spacing:-.01em}
+
+/* A quiet circuit-board texture behind the whole app instead of a
+   flat slate fill — visible but never competes with content. */
+body{
+  background-color:#020617;
+  background-image:
+    radial-gradient(circle at 15% 0%,rgba(34,211,238,.07),transparent 42%),
+    radial-gradient(circle at 100% 30%,rgba(37,99,235,.06),transparent 45%),
+    linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);
+  background-size:auto,auto,44px 44px,44px 44px;
+  background-attachment:fixed;
+}
+
+/* Header: a hairline accent instead of a flat border, plus a touch
+   more presence to the wordmark. */
+header.sticky{border-bottom:1px solid transparent;position:relative}
+header.sticky::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(34,211,238,.5) 20%,rgba(37,99,235,.35) 55%,transparent 90%);
+}
+header.sticky span.text-lg.font-black{font-family:var(--nil-display);letter-spacing:-.02em}
+
+/* Hero panel: layered depth + a faint schematic trace motif so the
+   opening moment feels like the subject matter, not a generic
+   gradient-card hero. */
+#sec-home > div.relative.overflow-hidden{
+  background-color:#0a1324;
+  background-image:
+    radial-gradient(circle at 85% -10%,rgba(34,211,238,.16),transparent 55%),
+    linear-gradient(180deg,#0f172a 0%,rgba(15,23,42,.55) 55%,#020617 100%),
+    repeating-linear-gradient(90deg,rgba(103,232,249,.05) 0 1px,transparent 1px 120px),
+    repeating-linear-gradient(0deg,rgba(103,232,249,.05) 0 1px,transparent 1px 120px);
+  box-shadow:inset 0 0 0 1px rgba(34,211,238,.12),inset 0 40px 80px -60px rgba(34,211,238,.25);
+}
+#sec-home h1{font-weight:600}
+
+/* CTA buttons: gradient fills + a real press/lift instead of a flat
+   color swap, matching the elevation already used elsewhere. */
+.bg-cyan-500[data-elab-action],#btn-explore-components{
+  background-image:linear-gradient(135deg,#22d3ee,#06b6d4);
+}
+[data-elab-action="show-builder"]{background-image:linear-gradient(135deg,#3b82f6,#2563eb)}
+[data-elab-action="show-industrial"]{background-image:linear-gradient(135deg,#f59e0b,#d97706)}
+#sec-home button:hover{filter:brightness(1.06)}
+
+/* Slightly richer, less uniform corner rounding so panels don't all
+   read as the same SaaS-card shape. */
+#sec-home > div.relative.overflow-hidden{border-radius:1.25rem}
+
+@media (prefers-reduced-motion:reduce){
+  #sec-home button:hover{filter:none}
+}

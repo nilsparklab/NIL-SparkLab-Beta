@@ -1,0 +1,28 @@
+
+#elab-v571-props{
+  position:fixed;inset:0;z-index:10003;background:rgba(2,6,23,.84);
+  display:none;align-items:center;justify-content:center;padding:14px
+}
+#elab-v571-props.open{display:flex}
+#elab-v571-props .cp{
+  width:min(94vw,760px);max-height:90vh;overflow:auto;background:#020617;
+  border:1px solid rgba(34,211,238,.3);border-radius:20px;
+  box-shadow:0 30px 110px rgba(0,0,0,.65);padding:16px
+}
+#elab-v571-props .cp-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+#elab-v571-props .cp-title{font-size:16px;font-weight:900;color:#67e8f9}
+#elab-v571-props .cp-sub{font-size:10px;color:#94a3b8;margin-top:3px}
+#elab-v571-props button,#elab-v571-props input,#elab-v571-props select{
+  border:1px solid rgba(148,163,184,.18);background:#0f172a;color:#e2e8f0;
+  border-radius:9px;padding:8px 10px;font-size:11px
+}
+#elab-v571-props .cp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+#elab-v571-props .cp-field{background:#0b1220;border:1px solid rgba(148,163,184,.12);border-radius:11px;padding:9px}
+#elab-v571-props .cp-field label{display:block;font-size:10px;color:#94a3b8;margin-bottom:5px}
+#elab-v571-props .cp-field input,#elab-v571-props .cp-field select{width:100%;box-sizing:border-box}
+#elab-v571-props .cp-wide{grid-column:1/-1}
+#elab-v571-props .cp-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+#elab-v571-props .cp-status{margin-top:9px;padding:9px;border-radius:9px;background:#020617;color:#94a3b8;font-size:11px}
+#elab-v571-props .ok{color:#86efac}
+#elab-v571-props .warn{color:#fcd34d}
+@media(max-width:600px){#elab-v571-props .cp-grid{grid-template-columns:1fr}}

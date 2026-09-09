@@ -1,0 +1,5 @@
+
+html,body{overflow-x:hidden!important;}
+/* Reserved lower area remains visually empty; runtime/debug dumps are never user-facing. */
+#elab-v912-bottom-raw-text,.elab-bottom-raw-text,.elab-debug-output,
+.elab-runtime-dump,.elab-source-dump{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;}

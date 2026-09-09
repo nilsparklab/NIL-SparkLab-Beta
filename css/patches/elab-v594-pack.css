@@ -1,0 +1,26 @@
+
+#elab-guided{
+  position:fixed;left:12px;top:72px;z-index:12040;width:min(94vw,340px);
+  background:rgba(2,6,23,.95);backdrop-filter:blur(14px);
+  border:1px solid rgba(34,211,238,.35);border-radius:16px;
+  box-shadow:0 18px 50px rgba(0,0,0,.5);padding:14px;display:none
+}
+#elab-guided.open{display:block;animation:elabSaIn .25s ease}
+#elab-guided .g-title{font-size:13px;font-weight:900;color:#67e8f9;margin-bottom:4px}
+#elab-guided .g-step{font-size:10px;color:#22d3ee;font-weight:800;margin-bottom:6px}
+#elab-guided .g-desc{font-size:12px;color:#cbd5e1;line-height:1.45;margin-bottom:10px}
+#elab-guided .g-actions{display:flex;flex-wrap:wrap;gap:6px}
+#elab-guided button{
+  padding:7px 10px;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer;
+  border:1px solid rgba(148,163,184,.2);background:#0f172a;color:#e2e8f0
+}
+#elab-guided button.primary{background:linear-gradient(135deg,#0891b2,#22d3ee);color:#020617;border:none}
+#elab-guided-select{
+  width:100%;margin-bottom:8px;padding:7px 8px;border-radius:8px;font-size:11px;
+  background:#020617;border:1px solid rgba(148,163,184,.25);color:#e2e8f0
+}
+#elab-sa-tools-grid button{min-height:40px;font-size:9px}
+@media(max-width:640px){
+  #elab-guided{left:8px;right:8px;width:auto;top:64px}
+  #elab-fab-tools{bottom:150px;right:12px}
+}

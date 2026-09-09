@@ -1,0 +1,60 @@
+
+/* ============================================================
+   v101 — Visual identity, part two: carry the v100 typography +
+   depth language from the Home hero into modals, the Smart
+   Assistant, and secondary actions elsewhere in the app, so the
+   whole product reads as one design instead of "Home got a
+   redesign and everything else didn't."
+   Additive only — no selector here is removed or renamed, and
+   nothing that positions or rotates a placed circuit component
+   is touched, so wiring/drag behaviour is unaffected.
+   ============================================================ */
+
+/* Modal, dialog and panel headings pick up the same display face
+   as the hero, so the "voice" of the app stays consistent once
+   you open a panel instead of reverting to system-sans. */
+.elab-dialog-kicker,
+#elab-smart-panel .sa-title,
+.builder-library-heading h4{
+  font-family:var(--nil-display);
+}
+
+/* Secondary action colors (emerald / rose) get the same gradient
+   fill already established for the primary cyan / blue / amber
+   CTAs on Home, so buttons read as one family everywhere rather
+   than only on the first screen someone sees. */
+button.bg-emerald-500,button.bg-emerald-600{
+  background-image:linear-gradient(135deg,#34d399,#059669);
+}
+button.bg-rose-500,button.bg-rose-600{
+  background-image:linear-gradient(135deg,#fb7185,#e11d48);
+}
+button.bg-emerald-500:hover,button.bg-emerald-600:hover,
+button.bg-rose-500:hover,button.bg-rose-600:hover{
+  filter:brightness(1.06);
+}
+
+/* Component-library rows in the Builder's left panel are static
+   list items you click to add (never dragged themselves — the
+   canvas copy is a separate element), so they can safely get the
+   same restrained hover-lift as the Home feature cards. */
+#builder-component-grid .elab-comp-row{
+  transition:transform .15s ease,background .15s ease,box-shadow .15s ease;
+}
+#builder-component-grid .elab-comp-row:hover{transform:translateY(-1px)}
+
+/* One orchestrated entrance for the opening moment: the Home
+   hero settles into place once on load, then never again. */
+@keyframes elabHeroIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+#sec-home > div.relative.overflow-hidden{
+  animation:elabHeroIn .5s cubic-bezier(.22,1,.36,1) both;
+}
+
+@media (prefers-reduced-motion:reduce){
+  #sec-home > div.relative.overflow-hidden{animation:none}
+  #builder-component-grid .elab-comp-row{transition:none!important}
+  #builder-component-grid .elab-comp-row:hover{transform:none!important}
+}

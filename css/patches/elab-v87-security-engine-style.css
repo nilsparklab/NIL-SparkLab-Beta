@@ -1,0 +1,7 @@
+
+#elab-v87-test-engine{margin-top:16px;padding:14px;border:1px solid rgba(34,211,238,.18);border-radius:14px;background:rgba(2,6,23,.32)}
+.elab-v87-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.elab-v87-toolbar button{border:1px solid rgba(34,211,238,.25);background:rgba(8,47,73,.7);color:#e0f2fe;border-radius:9px;padding:8px 10px;cursor:pointer}
+#elab-v87-results{max-height:320px;overflow:auto;border:1px solid rgba(148,163,184,.12);border-radius:10px}
+.elab-v87-row{padding:10px 12px;border-bottom:1px solid rgba(148,163,184,.09);font-size:12px}
+.elab-v87-row:last-child{border-bottom:0}.elab-v87-pass{border-left:3px solid #22c55e}.elab-v87-warn{border-left:3px solid #eab308}.elab-v87-fail{border-left:3px solid #ef4444}

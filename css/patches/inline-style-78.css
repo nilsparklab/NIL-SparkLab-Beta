@@ -1,0 +1,37 @@
+
+#elab-v570-projects{
+  position:fixed;inset:0;z-index:10001;background:rgba(2,6,23,.82);
+  display:none;align-items:center;justify-content:center;padding:14px
+}
+#elab-v570-projects.open{display:flex}
+#elab-v570-projects .pm{
+  width:min(96vw,960px);max-height:91vh;overflow:auto;background:#020617;
+  border:1px solid rgba(34,211,238,.28);border-radius:20px;
+  box-shadow:0 30px 110px rgba(0,0,0,.65);padding:16px
+}
+#elab-v570-projects .pm-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#elab-v570-projects .pm-title{font-size:16px;font-weight:900;color:#67e8f9}
+#elab-v570-projects button,#elab-v570-projects input{
+  border:1px solid rgba(148,163,184,.18);background:#0f172a;color:#e2e8f0;
+  border-radius:9px;padding:8px 10px;font-size:11px
+}
+#elab-v570-projects input{box-sizing:border-box;width:100%}
+#elab-v570-projects .pm-toolbar{display:grid;grid-template-columns:1fr auto auto auto;gap:7px;margin-top:11px}
+#elab-v570-projects .pm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:11px}
+#elab-v570-projects .pm-card{
+  background:#0b1220;border:1px solid rgba(148,163,184,.12);border-radius:13px;padding:11px
+}
+#elab-v570-projects .pm-card.current{border-color:rgba(34,211,238,.55)}
+#elab-v570-projects .pm-name{font-weight:900;color:#f8fafc;font-size:13px}
+#elab-v570-projects .pm-meta{font-size:10px;color:#94a3b8;margin-top:5px;line-height:1.6}
+#elab-v570-projects .pm-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+#elab-v570-projects .pm-actions button{padding:6px 8px}
+#elab-v570-projects .pm-status{margin-top:10px;padding:9px;border-radius:9px;background:#020617;color:#94a3b8;font-size:11px}
+#elab-v570-projects .ok{color:#86efac}
+#elab-v570-projects .warn{color:#fcd34d}
+#elab-v570-projects .danger{color:#fca5a5}
+#elab-v570-projects .empty{grid-column:1/-1;text-align:center;padding:22px;color:#64748b}
+@media(max-width:650px){
+  #elab-v570-projects .pm-toolbar{grid-template-columns:1fr 1fr}
+  #elab-v570-projects .pm-grid{grid-template-columns:1fr}
+}

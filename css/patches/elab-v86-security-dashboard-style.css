@@ -1,0 +1,20 @@
+
+  #elab-v86-security-dashboard {
+    display:none; position:fixed; inset:0; z-index:2147483003;
+    background:rgba(2,6,23,.88); backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px); padding:16px; overflow:auto;
+  }
+  #elab-v86-security-dashboard.open { display:block; }
+  #elab-v86-security-card {
+    max-width:1040px; margin:4vh auto; padding:20px; border-radius:18px;
+    background:rgba(15,23,42,.98); color:#e2e8f0;
+    border:1px solid rgba(34,211,238,.24);
+    box-shadow:0 24px 90px rgba(0,0,0,.55); font-family:system-ui,sans-serif;
+  }
+  .elab-v86-statgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin:16px 0; }
+  .elab-v86-stat { padding:12px; border-radius:12px; background:rgba(30,41,59,.7); border:1px solid rgba(148,163,184,.16); }
+  .elab-v86-stat strong { display:block; font-size:24px; margin-top:4px; }
+  .elab-v86-check { padding:10px 12px; border-bottom:1px solid rgba(148,163,184,.1); font-size:12px; }
+  .elab-v86-actions { display:flex; flex-wrap:wrap; gap:8px; }
+  .elab-v86-actions button { border:1px solid rgba(34,211,238,.25); background:rgba(8,47,73,.7); color:#e0f2fe; border-radius:10px; padding:8px 11px; cursor:pointer; }
+  #elab-v86-checks { max-height:360px; overflow:auto; border:1px solid rgba(148,163,184,.14); border-radius:12px; }

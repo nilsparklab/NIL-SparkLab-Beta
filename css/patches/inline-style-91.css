@@ -1,0 +1,24 @@
+
+#elab-v574-records{position:fixed;inset:0;z-index:10006;background:rgba(2,6,23,.84);display:none;align-items:center;justify-content:center;padding:14px}
+#elab-v574-records.open{display:flex}
+#elab-v574-records .rp{width:min(96vw,980px);max-height:91vh;overflow:auto;background:#020617;border:1px solid rgba(34,211,238,.3);border-radius:20px;box-shadow:0 30px 110px rgba(0,0,0,.65);padding:16px}
+#elab-v574-records .head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+#elab-v574-records .title{font-size:16px;font-weight:900;color:#67e8f9}
+#elab-v574-records button,#elab-v574-records input,#elab-v574-records select,#elab-v574-records textarea{border:1px solid rgba(148,163,184,.18);background:#0f172a;color:#e2e8f0;border-radius:9px;padding:8px 10px;font-size:11px}
+#elab-v574-records .top{display:grid;grid-template-columns:1fr auto auto;gap:7px;margin-top:11px}
+#elab-v574-records .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+#elab-v574-records .stat{background:#0b1220;border:1px solid rgba(148,163,184,.12);border-radius:10px;padding:10px;text-align:center;color:#94a3b8;font-size:10px}
+#elab-v574-records .stat strong{display:block;color:#f8fafc;font-size:15px;margin-top:3px}
+#elab-v574-records .body{display:grid;grid-template-columns:300px 1fr;gap:10px;margin-top:10px}
+#elab-v574-records .card{background:#0b1220;border:1px solid rgba(148,163,184,.12);border-radius:13px;padding:11px}
+#elab-v574-records .exp-list{display:grid;gap:6px}
+#elab-v574-records .exp{width:100%;text-align:left}
+#elab-v574-records .exp.active{border-color:rgba(34,211,238,.7);color:#67e8f9}
+#elab-v574-records .row{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+#elab-v574-records label{display:block;color:#94a3b8;font-size:10px;margin-bottom:4px}
+#elab-v574-records input,#elab-v574-records select,#elab-v574-records textarea{width:100%;box-sizing:border-box}
+#elab-v574-records textarea{min-height:90px;resize:vertical}
+#elab-v574-records .actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+#elab-v574-records .status{margin-top:9px;padding:9px;border-radius:9px;background:#020617;color:#cbd5e1;font-size:11px;line-height:1.5}
+#elab-v574-records .ok{color:#86efac}.warn{color:#fcd34d}
+@media(max-width:700px){#elab-v574-records .body{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr!important}.top{grid-template-columns:1fr 1fr!important}}

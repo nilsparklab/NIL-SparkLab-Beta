@@ -1,0 +1,189 @@
+
+/* ===== Empty Canvas State ===== */
+.elab-empty-state{display:flex;flex-direction:column;align-items:center;gap:10px}
+.elab-empty-icon{
+  width:64px;height:64px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(8,145,178,.2),rgba(34,211,238,.12));
+  border:1px solid rgba(34,211,238,.28);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;box-shadow:0 0 28px rgba(34,211,238,.15);
+  animation:elabEmptyPulse 2.4s ease-in-out infinite;
+}
+@keyframes elabEmptyPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 20px rgba(34,211,238,.12)}
+  50%{transform:scale(1.04);box-shadow:0 0 32px rgba(34,211,238,.28)}
+}
+.elab-empty-title{font-size:15px;font-weight:800;color:#e2e8f0;letter-spacing:.2px}
+.elab-empty-sub{font-size:11px;color:#64748b;line-height:1.45;max-width:280px}
+.elab-empty-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px}
+.elab-empty-btn{
+  pointer-events:auto;cursor:pointer;
+  padding:8px 12px;border-radius:10px;font-size:11px;font-weight:700;
+  background:#0f172a;border:1px solid rgba(34,211,238,.28);color:#67e8f9;
+  transition:all .18s ease;
+}
+.elab-empty-btn:hover{
+  background:#111c31;border-color:rgba(34,211,238,.55);
+  box-shadow:0 0 16px rgba(34,211,238,.15);transform:translateY(-1px)
+}
+.elab-empty-btn:active{transform:scale(.97)}
+#canvas-empty-text.hidden{display:none!important}
+
+/* ===== First Visit Mini Tour ===== */
+#elab-mini-tour{
+  position:fixed;inset:0;z-index:13000;
+  background:rgba(2,6,23,.78);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:16px;
+}
+#elab-mini-tour.open{display:flex}
+#elab-mini-tour .mt-card{
+  width:min(92vw,420px);background:#0b1220;
+  border:1px solid rgba(34,211,238,.35);border-radius:20px;
+  box-shadow:0 28px 80px rgba(0,0,0,.6);padding:20px 18px 16px;
+  position:relative;animation:elabSaIn .28s ease;
+}
+@keyframes elabSaIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#elab-mini-tour .mt-step{
+  font-size:10px;font-weight:800;color:#22d3ee;letter-spacing:.8px;
+  text-transform:uppercase;margin-bottom:8px
+}
+#elab-mini-tour .mt-title{font-size:18px;font-weight:900;color:#f8fafc;margin-bottom:8px}
+#elab-mini-tour .mt-desc{font-size:13px;color:#94a3b8;line-height:1.55;margin-bottom:16px}
+#elab-mini-tour .mt-dots{display:flex;gap:6px;margin-bottom:14px}
+#elab-mini-tour .mt-dot{
+  width:8px;height:8px;border-radius:50%;background:#334155;transition:.2s
+}
+#elab-mini-tour .mt-dot.active{background:#22d3ee;box-shadow:0 0 8px rgba(34,211,238,.5)}
+#elab-mini-tour .mt-actions{display:flex;gap:8px;justify-content:space-between;align-items:center}
+#elab-mini-tour .mt-btn{
+  padding:9px 14px;border-radius:10px;font-size:12px;font-weight:700;
+  border:1px solid rgba(148,163,184,.2);background:#0f172a;color:#e2e8f0;cursor:pointer
+}
+#elab-mini-tour .mt-btn.primary{
+  background:linear-gradient(135deg,#0891b2,#22d3ee);color:#020617;border:none
+}
+#elab-mini-tour .mt-skip{font-size:11px;color:#64748b;background:0;border:0;cursor:pointer}
+#elab-mini-tour .mt-skip:hover{color:#94a3b8}
+
+
+/* Smart Assistant Pro */
+#elab-smart-panel{max-height:min(70vh,520px)!important;width:min(94vw,360px)!important}
+.sa-ask-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+.sa-ask-row input{
+  flex:1 1 150px;min-width:120px;padding:8px 10px;border-radius:9px;font-size:12px;
+  border:1px solid rgba(148,163,184,.25);background:#020617;color:#e2e8f0;outline:none
+}
+.sa-ask-row input:focus{border-color:#22d3ee}
+.sa-ask-row button{
+  padding:8px 12px;border-radius:9px;font-size:11px;font-weight:800;cursor:pointer;
+  border:none;background:linear-gradient(135deg,#0891b2,#22d3ee);color:#020617
+}
+
+.sa-second-row{display:flex;gap:6px;margin:0 0 8px}
+.sa-second-row > button{flex:1 1 0}
+.sa-tools-toggle{
+  background:#0f172a !important;color:#67e8f9 !important;border:1px solid rgba(34,211,238,.32) !important;
+  min-width:72px;white-space:nowrap
+}
+.sa-tools-toggle span{display:inline-block;margin-left:3px;transition:transform .18s ease}
+.sa-tools-toggle[aria-expanded="true"] span{transform:rotate(180deg)}
+.sa-tools-menu{
+  display:none;gap:6px;flex-wrap:wrap;margin:0 0 8px
+}
+.sa-tools-menu.open{display:flex}
+.sa-tools-menu button{
+  flex:1 1 auto;background:#0f172a !important;color:#67e8f9 !important;
+  border:1px solid rgba(34,211,238,.28) !important;
+}
+.sa-tools-menu button:hover{border-color:rgba(34,211,238,.62) !important;background:#111c31 !important}
+/* v96.5: only the selected assistant mode gets the active cyan treatment. */
+#elab-smart-panel .sa-ask-row #elab-sa-ask.sa-mode-active,
+#elab-smart-panel .sa-tools-menu button.sa-mode-active{
+  background:linear-gradient(135deg,#0891b2,#22d3ee) !important;
+  color:#020617 !important;
+  border-color:transparent !important;
+  box-shadow:0 5px 16px rgba(34,211,238,.18);
+}
+.sa-ask-row #elab-sa-web{background:#0f172a;color:#67e8f9;border:1px solid rgba(34,211,238,.32)}
+.sa-ask-row #elab-sa-web:hover{border-color:rgba(34,211,238,.65);background:#111c31}
+.sa-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.sa-chip{
+  padding:5px 9px;border-radius:999px;font-size:10px;font-weight:700;cursor:pointer;
+  background:#0f172a;border:1px solid rgba(34,211,238,.25);color:#67e8f9
+}
+.sa-chip:hover{border-color:rgba(34,211,238,.55);background:#111c31}
+.sa-coach{
+  background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25);
+  border-radius:11px;padding:10px 12px;margin-bottom:8px;font-size:12px;color:#e2e8f0;line-height:1.45
+}
+.sa-coach .sc-label{font-size:10px;font-weight:800;color:#22d3ee;margin-bottom:4px;letter-spacing:.4px}
+.sa-path{
+  background:rgba(250,204,21,.06);border:1px solid rgba(250,204,21,.22);
+  border-radius:11px;padding:10px 12px;margin-bottom:8px;font-size:12px;color:#fde68a;line-height:1.45
+}
+.sa-answer{
+  background:#0f172a;border-left:3px solid #22d3ee;border-radius:0 11px 11px 0;
+  padding:10px 12px;margin-bottom:8px;font-size:12px;color:#cbd5e1;line-height:1.5
+}
+#elab-smart-assistant-btn.sa-pulse{
+  animation:saPulse 1.2s ease-in-out 3;
+}
+@keyframes saPulse{
+  0%,100%{box-shadow:0 8px 24px rgba(34,211,238,.4)}
+  50%{box-shadow:0 8px 32px rgba(34,211,238,.85),0 0 0 6px rgba(34,211,238,.15)}
+}
+
+/* Smart Assistant */
+#elab-smart-assistant-btn{
+  position:fixed;bottom:78px;right:18px;z-index:11980;
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,#0891b2,#22d3ee);
+  border:none;color:#020617;font-size:20px;font-weight:700;
+  box-shadow:0 8px 24px rgba(34,211,238,.4),0 0 0 1px rgba(255,255,255,.12);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .22s cubic-bezier(.22,1,.36,1);
+}
+#elab-smart-assistant-btn:hover{
+  transform:scale(1.07) translateY(-2px);
+  box-shadow:0 12px 32px rgba(34,211,238,.55)
+}
+#elab-smart-assistant-btn:active{transform:scale(.95)}
+#elab-smart-panel{
+  position:fixed;bottom:145px;right:18px;z-index:11980;
+  width:min(92vw,330px);max-height:400px;overflow:auto;
+  background:rgba(2,6,23,.94);backdrop-filter:blur(18px);
+  border:1px solid rgba(34,211,238,.32);border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,.55);padding:14px;display:none;
+}
+#elab-smart-panel.open{display:block;animation:elabSaIn .25s ease}
+#elab-smart-panel .sa-title{
+  font-size:13px;font-weight:800;color:#67e8f9;
+  margin-bottom:10px;display:flex;align-items:center;gap:6px
+}
+#elab-smart-panel .sa-tip{
+  background:#0f172a;border:1px solid rgba(148,163,184,.14);
+  border-radius:11px;padding:10px 12px;margin-bottom:7px;
+  font-size:12px;color:#cbd5e1;line-height:1.45
+}
+#elab-smart-panel .sa-tip b{color:#e2e8f0}
+.sa-web-results{margin:8px 0 10px;display:grid;gap:7px}
+.sa-web-item{display:block;padding:9px 10px;border-radius:10px;background:#020617;border:1px solid rgba(34,211,238,.2);color:#cbd5e1;text-decoration:none}
+.sa-web-item:hover{border-color:rgba(34,211,238,.5);background:#081426}
+.sa-web-item .title{font-size:11px;font-weight:800;color:#67e8f9;margin-bottom:3px}
+.sa-web-item .desc{font-size:10px;line-height:1.45;color:#94a3b8}
+.sa-web-item .open{font-size:9px;font-weight:800;color:#22d3ee;margin-top:6px;opacity:.85}
+.sa-web-note{font-size:10px;color:#64748b;margin-top:5px}
+.sa-ask-row #elab-sa-web:disabled,#elab-sa-research:disabled,#elab-sa-literature:disabled,#elab-sa-books:disabled{opacity:.55;cursor:wait}
+#elab-smart-close{
+  position:absolute;top:10px;right:12px;background:0;border:0;
+  color:#94a3b8;font-size:18px;cursor:pointer
+}
+.sa-action{
+  display:inline-block;margin-top:7px;padding:5px 10px;border-radius:8px;
+  font-size:10px;font-weight:700;cursor:pointer;
+  background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#67e8f9
+}
+.sa-action:hover{background:rgba(34,211,238,.18)}
+@media(max-width:480px){
+  #elab-smart-assistant-btn{bottom:70px;right:14px;width:48px;height:48px}
+}

@@ -1,0 +1,51 @@
+
+.elab-builder-chips{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:8px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding:2px 2px 8px;
+  margin-left:-2px;
+  margin-right:-2px;
+}
+.elab-builder-chips::-webkit-scrollbar{display:none}
+.elab-builder-chips .builder-cat{
+  flex:0 0 auto;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  line-height:1;
+  background:#0f172a;
+  color:#94a3b8;
+  border:1px solid #1e293b;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:all .15s ease;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.elab-builder-chips .builder-cat.is-active{
+  background:rgba(34,211,238,.16);
+  color:#67e8f9;
+  border-color:rgba(34,211,238,.45);
+  box-shadow:0 0 0 1px rgba(34,211,238,.12);
+}
+.elab-builder-chips .builder-cat:active{transform:scale(.97)}
+@media(max-width:768px){
+  .elab-builder-chips{position:sticky;top:0;z-index:5;background:linear-gradient(#0f172a 70%,rgba(15,23,42,.92));padding-top:6px}
+  #builder-component-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  /* v59 audit fix — preserve right-side space for the explicit + add affordance on mobile. */
+#builder-component-grid .elab-comp-row{min-height:64px!important;padding:10px 42px 10px 12px!important}
+  #builder-component-search{font-size:14px;min-height:42px}
+}
+@media(min-width:1024px){
+  .elab-builder-chips{flex-wrap:wrap;overflow:visible}
+}

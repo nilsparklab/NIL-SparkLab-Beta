@@ -1,0 +1,38 @@
+
+#elab-v568-practical{
+  position:fixed;inset:0;z-index:9990;background:rgba(2,6,23,.82);
+  display:none;align-items:center;justify-content:center;padding:14px
+}
+#elab-v568-practical.open{display:flex}
+#elab-v568-practical .p68{
+  width:min(96vw,980px);max-height:91vh;overflow:auto;background:#020617;
+  border:1px solid rgba(34,211,238,.28);border-radius:20px;
+  box-shadow:0 30px 110px rgba(0,0,0,.65);padding:16px
+}
+#elab-v568-practical .head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#elab-v568-practical .title{font-size:16px;font-weight:900;color:#67e8f9}
+#elab-v568-practical button,#elab-v568-practical select{
+  border:1px solid rgba(148,163,184,.18);background:#0f172a;color:#e2e8f0;
+  border-radius:9px;padding:8px 10px;font-size:11px
+}
+#elab-v568-practical .layout{display:grid;grid-template-columns:270px 1fr;gap:11px;margin-top:12px}
+#elab-v568-practical .card{background:#0b1220;border:1px solid rgba(148,163,184,.12);border-radius:14px;padding:11px}
+#elab-v568-practical .list{display:grid;gap:7px}
+#elab-v568-practical .exp{width:100%;text-align:left}
+#elab-v568-practical .exp.active{border-color:rgba(34,211,238,.7);color:#67e8f9}
+#elab-v568-practical .objective{font-size:12px;color:#cbd5e1;line-height:1.5;margin-top:7px}
+#elab-v568-practical .steps{padding-left:20px;color:#cbd5e1;font-size:11px;line-height:1.7}
+#elab-v568-practical .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:9px}
+#elab-v568-practical .metric{background:#020617;border-radius:9px;padding:8px;text-align:center;color:#94a3b8;font-size:10px}
+#elab-v568-practical .metric strong{display:block;color:#e2e8f0;font-size:12px;margin-top:2px}
+#elab-v568-practical .result{margin-top:10px;padding:11px;border-radius:10px;background:#020617;border:1px solid rgba(148,163,184,.12);font-size:11px}
+#elab-v568-practical .ok{color:#86efac}
+#elab-v568-practical .warn{color:#fcd34d}
+#elab-v568-practical .bad{color:#fca5a5}
+#elab-v568-practical textarea{width:100%;min-height:80px;box-sizing:border-box;background:#020617;color:#e2e8f0;border:1px solid rgba(148,163,184,.16);border-radius:9px;padding:8px;font-size:11px}
+#elab-v568-practical .actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+#elab-v568-practical .badge{display:inline-block;padding:4px 7px;border-radius:7px;background:rgba(34,211,238,.08);color:#67e8f9;font-size:10px}
+@media(max-width:700px){
+  #elab-v568-practical .layout{grid-template-columns:1fr}
+  #elab-v568-practical .metrics{grid-template-columns:1fr 1fr}
+}

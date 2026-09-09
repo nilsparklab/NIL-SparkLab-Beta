@@ -1,0 +1,324 @@
+
+/* ============================================================
+   NIL SparkLab v100 — Smart Assistant retint to site palette
+   Scope: Smart Assistant launcher + panel ONLY.
+   Same "instrument panel" structure as before, recolored to the
+   site's cyan/blue identity instead of the copper/amber skin.
+   No structural/JS changes — visual layer only.
+   ============================================================ */
+:root{
+  --sa98-chassis:#0a0f1c;       /* body of the instrument */
+  --sa98-face:#0f172a;          /* panel face, one step up   */
+  --sa98-face-2:#13213a;
+  --sa98-line:rgba(34,211,238,.28);   /* cyan hairline */
+  --sa98-line-soft:rgba(34,211,238,.16);
+  --sa98-copper:#22d3ee;
+  --sa98-copper-bright:#67e8f9;
+  --sa98-amber:#22d3ee;
+  --sa98-amber-soft:rgba(34,211,238,.14);
+  --sa98-amber-dim:#155e75;
+  --sa98-ink:#e2e8f0;
+  --sa98-ink-dim:#94a3b8;
+  --sa98-ink-faint:#64748b;
+  --sa98-warn:#ff6b52;
+  --sa98-ok:#8fd66b;
+  --sa98-mono:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,Consolas,monospace;
+  --sa98-sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sa98-radius:3px;
+}
+
+/* ---------- Launcher button: a pilot switch, not a SaaS FAB ---------- */
+#elab-smart-assistant-btn{
+  background:linear-gradient(160deg,#16324a,#0a0f1c 62%) !important;
+  border:1px solid var(--sa98-copper) !important;
+  color:var(--sa98-amber) !important;
+  border-radius:14px !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.05) inset,
+    0 10px 26px rgba(0,0,0,.55),
+    0 0 0 1px rgba(0,0,0,.4) !important;
+  font-family:var(--sa98-mono) !important;
+  text-shadow:0 0 10px rgba(34,211,238,.65) !important;
+}
+#elab-smart-assistant-btn::after{
+  content:"";position:absolute;width:5px;height:5px;border-radius:50%;
+  background:var(--sa98-amber);top:9px;right:9px;
+  box-shadow:0 0 6px 1px rgba(34,211,238,.9);
+}
+#elab-smart-assistant-btn:hover{
+  transform:translateY(-1px) !important;
+  border-color:var(--sa98-copper-bright) !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.6),0 0 0 1px rgba(34,211,238,.25) !important;
+}
+#elab-smart-assistant-btn:active{transform:scale(.96) !important}
+#elab-smart-assistant-btn.sa-pulse{animation:sa98Pulse 1.2s ease-in-out 3 !important}
+@keyframes sa98Pulse{
+  0%,100%{box-shadow:0 10px 26px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,238,.2)}
+  50%{box-shadow:0 10px 30px rgba(0,0,0,.6),0 0 0 5px rgba(34,211,238,.18)}
+}
+
+/* ---------- Panel chassis ---------- */
+#elab-smart-panel{
+  background:
+    repeating-linear-gradient(0deg,rgba(34,211,238,.035) 0 1px,transparent 1px 22px),
+    repeating-linear-gradient(90deg,rgba(34,211,238,.035) 0 1px,transparent 1px 22px),
+    linear-gradient(175deg,var(--sa98-face-2),var(--sa98-chassis) 70%) !important;
+  border:1px solid var(--sa98-line) !important;
+  border-radius:10px !important;
+  box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.5) !important;
+  backdrop-filter:blur(6px) !important;
+}
+#elab-smart-panel .sa-title{
+  font-family:var(--sa98-mono) !important;
+  color:var(--sa98-amber) !important;
+  font-weight:700 !important;
+  letter-spacing:.2px !important;
+  border-bottom:1px solid var(--sa98-line) !important;
+  padding-bottom:9px !important;
+  text-shadow:0 0 12px rgba(34,211,238,.35) !important;
+}
+#elab-smart-panel .sa-title::before{
+  content:"";display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--sa98-amber);box-shadow:0 0 7px 1px rgba(34,211,238,.85);
+  margin-right:2px;
+}
+#elab-smart-close{color:var(--sa98-ink-dim) !important}
+#elab-smart-close:hover{color:var(--sa98-amber) !important}
+
+/* ---------- Ask row / input / mic / ask button ---------- */
+.sa-ask-row input{
+  background:#0a0f1a !important;
+  border:1px solid var(--sa98-line) !important;
+  color:var(--sa98-ink) !important;
+  border-radius:var(--sa98-radius) !important;
+  font-family:var(--sa98-sans) !important;
+}
+.sa-ask-row input::placeholder{color:var(--sa98-ink-faint) !important}
+.sa-ask-row input:focus{
+  border-color:var(--sa98-amber) !important;
+  box-shadow:0 0 0 1px rgba(34,211,238,.35) !important;
+}
+#elab-sa-ask{
+  font-family:var(--sa98-mono) !important;
+  background:linear-gradient(160deg,var(--sa98-copper-bright),var(--sa98-copper)) !important;
+  color:#04141a !important;
+  border-radius:var(--sa98-radius) !important;
+  font-weight:700 !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 3px 10px rgba(0,0,0,.4) !important;
+}
+#elab-sa-ask:hover{filter:brightness(1.08) !important}
+#elab-smart-panel .elab-assistant-mic{
+  background:#0a0f1a !important;
+  border:1px solid var(--sa98-line) !important;
+  color:var(--sa98-amber) !important;
+  border-radius:var(--sa98-radius) !important;
+}
+#elab-smart-panel .elab-assistant-mic:hover{
+  box-shadow:0 0 12px rgba(34,211,238,.28) !important;
+  border-color:var(--sa98-copper-bright) !important;
+}
+
+/* ---------- Tools toggle + menu: rocker-switch row ---------- */
+.sa-tools-toggle{
+  background:#0a0f1a !important;color:var(--sa98-ink-dim) !important;
+  border:1px solid var(--sa98-line) !important;
+  border-radius:var(--sa98-radius) !important;
+  font-family:var(--sa98-mono) !important;
+}
+.sa-tools-toggle[aria-expanded="true"]{
+  color:var(--sa98-amber) !important;border-color:var(--sa98-copper) !important;
+}
+.sa-tools-menu button{
+  background:#0a0f1a !important;color:var(--sa98-ink-dim) !important;
+  border:1px solid var(--sa98-line) !important;
+  border-top:2px solid var(--sa98-copper) !important;
+  border-radius:0 0 var(--sa98-radius) var(--sa98-radius) !important;
+  font-family:var(--sa98-mono) !important;
+}
+.sa-tools-menu button:hover{
+  color:var(--sa98-ink) !important;border-color:rgba(34,211,238,.55) !important;
+  background:#111c31 !important;
+}
+.sa-ask-row #elab-sa-web{
+  background:#0a0f1a !important;color:var(--sa98-ink-dim) !important;
+  border:1px solid var(--sa98-line) !important;font-family:var(--sa98-mono) !important;
+}
+.sa-ask-row #elab-sa-web:hover{border-color:var(--sa98-copper) !important;background:#111c31 !important}
+
+/* Active/selected mode: amber glow + underline, not a filled pill */
+#elab-smart-panel .sa-ask-row #elab-sa-ask.sa-mode-active,
+#elab-smart-panel .sa-tools-menu button.sa-mode-active{
+  background:var(--sa98-amber-soft) !important;
+  color:var(--sa98-amber) !important;
+  border-color:var(--sa98-amber) !important;
+  box-shadow:inset 0 -2px 0 var(--sa98-amber) !important;
+}
+
+/* ---------- Quick-action chips: pin-header tabs, not pills ---------- */
+#elab-smart-panel .sa-chip,
+.sa-chip{
+  background:#0f172a !important;
+  border:1px solid var(--sa98-line) !important;
+  color:var(--sa98-ink-dim) !important;
+  border-radius:var(--sa98-radius) !important;
+  font-family:var(--sa98-mono) !important;
+  position:relative !important;
+  padding-left:14px !important;
+}
+#elab-smart-panel .sa-chip::before,
+.sa-chip::before{
+  content:"";position:absolute;left:6px;top:50%;transform:translateY(-50%);
+  width:3px;height:3px;border-radius:50%;background:var(--sa98-copper);
+}
+#elab-smart-panel .sa-chip:hover,
+.sa-chip:hover{
+  border-color:var(--sa98-copper) !important;color:var(--sa98-ink) !important;
+  background:#16233d !important;
+}
+
+/* ---------- Info cards: unified copper/amber trace-line treatment ---------- */
+.sa-tip,
+.sa-coach,
+.sa-answer,
+.sa-v48-card,
+.nil-v49-card,
+.nil-v51-card,
+.nil-v54-card,
+.nil-v56-card{
+  background:var(--sa98-face) !important;
+  border:1px solid var(--sa98-line-soft) !important;
+  border-left:3px solid var(--sa98-copper) !important;
+  border-radius:0 var(--sa98-radius) var(--sa98-radius) 0 !important;
+  color:var(--sa98-ink) !important;
+  font-family:var(--sa98-sans) !important;
+  box-shadow:none !important;
+}
+.sa-tip b,.sa-coach b,.sa-answer b,
+.sa-v48-card h4,.nil-v56-card h4{color:var(--sa98-amber) !important}
+.sc-label{
+  color:var(--sa98-amber) !important;font-family:var(--sa98-mono) !important;
+  font-weight:800 !important;letter-spacing:.3px !important;
+}
+.sa-path{
+  background:var(--sa98-face) !important;
+  border:1px solid var(--sa98-line-soft) !important;
+  border-left:3px solid var(--sa98-amber) !important;
+  border-radius:0 var(--sa98-radius) var(--sa98-radius) 0 !important;
+  color:var(--sa98-ink) !important;
+  font-family:var(--sa98-sans) !important;
+}
+.sa-v48-warn{border-left-color:var(--sa98-warn) !important}
+.sa-answer pre.sa-ascii{color:var(--sa98-copper-bright) !important;font-family:var(--sa98-mono) !important}
+
+/* v56 diagnostic list severity ticks stay legible against warm chassis */
+.nil-v56-item{background:rgba(0,0,0,.22) !important;border-left-width:3px !important}
+.nil-v56-item.high{border-left-color:var(--sa98-warn) !important}
+.nil-v56-item.medium{border-left-color:var(--sa98-amber) !important}
+.nil-v56-item.ok{border-left-color:var(--sa98-ok) !important}
+.nil-v56-bar{background:rgba(255,255,255,.08) !important}
+.nil-v56-bar span{background:var(--sa98-amber) !important}
+.nil-v49-metric,.nil-v56-grid>div{
+  background:rgba(0,0,0,.22) !important;border:1px solid var(--sa98-line-soft) !important;
+}
+.nil-v49-metric b{color:var(--sa98-amber) !important}
+.nil-v49-note,.nil-v56-note{color:var(--sa98-ink-faint) !important}
+
+/* ---------- Versioned tool-chip buttons (v48/49/51/54/56) — unified ---------- */
+.sa-v48-tool,
+#nil-v49-tools .sa-v49-tool,
+#nil-v51-tools .sa-v51-tool,
+#nil-v54-tools .sa-v54-tool,
+.sa-v56-tool,
+.nil-v56-actions button{
+  background:#0a0f1a !important;
+  border:1px solid var(--sa98-line) !important;
+  color:var(--sa98-ink-dim) !important;
+  font-family:var(--sa98-mono) !important;
+  border-radius:var(--sa98-radius) !important;
+}
+.sa-v48-tool:hover,
+#nil-v49-tools .sa-v49-tool:hover,
+#nil-v51-tools .sa-v51-tool:hover,
+#nil-v54-tools .sa-v54-tool:hover,
+.sa-v56-tool:hover,
+.nil-v56-actions button:hover{
+  border-color:var(--sa98-copper) !important;
+  color:var(--sa98-ink) !important;
+  box-shadow:0 0 10px rgba(34,211,238,.18) !important;
+}
+
+/* ---------- Intent badge ---------- */
+.sa-intent-badge{
+  background:rgba(0,0,0,.3) !important;border:1px solid var(--sa98-line) !important;
+  color:var(--sa98-ink-faint) !important;font-family:var(--sa98-mono) !important;
+}
+.sa-intent-badge b{color:var(--sa98-amber) !important}
+
+/* ---------- Diagram / vision / web-results ---------- */
+.sa-diagram-wrap{
+  background:#0a0f1a !important;border:1px solid var(--sa98-line) !important;
+}
+.sa-diagram-caption{color:var(--sa98-ink-faint) !important;font-family:var(--sa98-sans) !important}
+.sa-diagram-actions button{
+  background:#0f172a !important;border:1px solid var(--sa98-line) !important;
+  color:var(--sa98-ink-dim) !important;font-family:var(--sa98-mono) !important;
+}
+.sa-diagram-actions button:hover{border-color:var(--sa98-copper) !important;color:var(--sa98-ink) !important}
+.sa-vision-box{background:#0a0f1a !important;border:1px solid var(--sa98-line) !important}
+.sa-vision-box .sv-hint{color:var(--sa98-ink-faint) !important}
+
+.sa-web-item{
+  background:#0a0f1a !important;border:1px solid var(--sa98-line-soft) !important;
+  color:var(--sa98-ink-dim) !important;
+}
+.sa-web-item:hover{border-color:var(--sa98-copper) !important;background:#111c31 !important}
+.sa-web-item .title{color:var(--sa98-amber) !important;font-family:var(--sa98-mono) !important}
+.sa-web-item .desc{color:var(--sa98-ink-faint) !important}
+.sa-web-item .open{color:var(--sa98-copper-bright) !important}
+.sa-web-note{color:var(--sa98-ink-faint) !important}
+.sa-action{
+  background:rgba(34,211,238,.1) !important;border:1px solid var(--sa98-amber-dim) !important;
+  color:var(--sa98-amber) !important;font-family:var(--sa98-mono) !important;
+}
+.sa-action:hover{background:rgba(34,211,238,.18) !important}
+
+/* ---------- Diagram badge / netlist / confirm-sketch (previously missed) ---------- */
+.sa-diagram-badge{font-family:var(--sa98-mono) !important}
+.sa-diagram-badge.canvas{background:rgba(56,189,248,.1) !important;border-color:rgba(56,189,248,.3) !important}
+.sa-diagram-netlist{
+  background:#0a0f1a !important;border:1px solid var(--sa98-line-soft) !important;
+  color:var(--sa98-ink-faint) !important;
+}
+.sa-diagram-confirm{background:var(--sa98-face) !important;border:1px solid var(--sa98-line-soft) !important}
+.sa-diagram-confirm .cdc-title{color:var(--sa98-amber) !important;font-family:var(--sa98-mono) !important}
+.sa-diagram-confirm .cdc-chip{
+  background:#0a0f1a !important;border:1px solid var(--sa98-line) !important;
+  color:var(--sa98-ink-faint) !important;
+}
+.sa-diagram-confirm .cdc-chip.on{
+  border-color:var(--sa98-amber) !important;color:var(--sa98-amber) !important;
+  background:var(--sa98-amber-soft) !important;
+}
+.sa-diagram-confirm .cdc-actions button{
+  background:linear-gradient(160deg,var(--sa98-copper-bright),var(--sa98-copper)) !important;
+  color:#04141a !important;border:none !important;font-family:var(--sa98-mono) !important;
+}
+
+/* Mic "listening" pulse — was amber-incompatible cyan; redefine same keyframe name (last @keyframes wins) */
+@keyframes elabMicPulse{50%{transform:scale(1.06);filter:drop-shadow(0 0 8px rgba(34,211,238,.65))}}
+
+/* ---------- Panel scrollbar (webkit) ---------- */
+#elab-smart-panel::-webkit-scrollbar{width:8px}
+#elab-smart-panel::-webkit-scrollbar-track{background:transparent}
+#elab-smart-panel::-webkit-scrollbar-thumb{background:var(--sa98-copper);border-radius:8px}
+
+/* ---------- Accessibility: focus + reduced motion ---------- */
+#elab-smart-panel button:focus-visible,
+#elab-smart-panel input:focus-visible,
+#elab-smart-assistant-btn:focus-visible{
+  outline:2px solid var(--sa98-amber) !important;outline-offset:2px !important;
+}
+@media (prefers-reduced-motion:reduce){
+  #elab-smart-assistant-btn.sa-pulse{animation:none !important}
+  #elab-smart-assistant-btn,#elab-smart-panel{transition:none !important}
+}

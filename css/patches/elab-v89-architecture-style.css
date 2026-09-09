@@ -1,0 +1,5 @@
+
+#elab-v89-architecture{margin-top:12px;padding:14px;border:1px solid rgba(34,211,238,.16);border-radius:14px;background:rgba(2,6,23,.25)}
+.elab-v89-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:10px}
+.elab-v89-item{padding:10px;border:1px solid rgba(148,163,184,.12);border-radius:10px;font-size:12px}
+.elab-v89-item b{display:block;margin-bottom:4px}.elab-v89-state{font-size:11px;opacity:.72}

@@ -1,0 +1,15 @@
+
+#elab-v573-analysis{position:fixed;inset:0;z-index:10005;background:rgba(2,6,23,.84);display:none;align-items:center;justify-content:center;padding:14px}
+#elab-v573-analysis.open{display:flex}
+#elab-v573-analysis .wa{width:min(96vw,980px);max-height:91vh;overflow:auto;background:#020617;border:1px solid rgba(34,211,238,.3);border-radius:20px;box-shadow:0 30px 110px rgba(0,0,0,.65);padding:16px}
+#elab-v573-analysis .head{display:flex;justify-content:space-between;align-items:center}
+#elab-v573-analysis .title{font-size:16px;font-weight:900;color:#67e8f9}
+#elab-v573-analysis button,#elab-v573-analysis select,#elab-v573-analysis input{border:1px solid rgba(148,163,184,.18);background:#0f172a;color:#e2e8f0;border-radius:9px;padding:8px 10px;font-size:11px}
+#elab-v573-analysis .toolbar{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:7px;margin-top:11px}
+#elab-v573-analysis canvas{width:100%;height:330px;background:#020617;border:1px solid rgba(34,211,238,.13);border-radius:12px;margin-top:10px}
+#elab-v573-analysis .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+#elab-v573-analysis .stat{background:#0b1220;border:1px solid rgba(148,163,184,.12);border-radius:9px;padding:8px;text-align:center;color:#94a3b8;font-size:10px}
+#elab-v573-analysis .stat strong{display:block;color:#f8fafc;font-size:12px;margin-top:3px}
+#elab-v573-analysis .result{margin-top:9px;padding:10px;border-radius:9px;background:#020617;border:1px solid rgba(148,163,184,.12);font-size:11px;line-height:1.5;color:#cbd5e1}
+#elab-v573-analysis .ok{color:#86efac}.warn{color:#fcd34d}
+@media(max-width:680px){#elab-v573-analysis .toolbar{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr!important}}

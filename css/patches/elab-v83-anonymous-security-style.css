@@ -1,0 +1,10 @@
+
+  #elab-v83-owner-note {
+    display:none; position:fixed; left:14px; right:14px; bottom:14px;
+    z-index:2147483002; max-width:560px; margin:auto;
+    padding:10px 12px; border-radius:12px;
+    background:rgba(15,23,42,.96); color:#cbd5e1;
+    border:1px solid rgba(34,211,238,.22);
+    box-shadow:0 14px 40px rgba(0,0,0,.4);
+    font:12px system-ui,sans-serif;
+  }

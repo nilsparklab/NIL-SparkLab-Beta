@@ -1,0 +1,62 @@
+
+#elab-nl-bar{
+  position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  transform:translateX(-50%);z-index:11960;
+  width:min(96vw,560px);display:flex;gap:6px;align-items:center;
+  background:rgba(2,6,23,.94);backdrop-filter:blur(14px);
+  border:1px solid rgba(34,211,238,.35);border-radius:14px;padding:8px;
+  box-shadow:0 12px 40px rgba(0,0,0,.45)
+}
+#elab-nl-bar input{
+  flex:1;min-width:0;border:0;background:transparent;color:#e2e8f0;
+  font-size:12px;padding:8px;outline:none
+}
+#elab-nl-bar button{
+  padding:8px 10px;border-radius:9px;border:none;font-size:11px;font-weight:800;cursor:pointer
+}
+#elab-nl-bar .go{background:linear-gradient(135deg,#0891b2,#22d3ee);color:#020617}
+#elab-nl-bar .mic{background:#0f172a;border:1px solid rgba(34,211,238,.3);color:#67e8f9}
+#elab-wave-panel{
+  position:fixed;right:12px;top:70px;z-index:12020;width:min(94vw,320px);
+  background:rgba(2,6,23,.95);border:1px solid rgba(52,211,153,.35);border-radius:14px;
+  padding:12px;display:none;box-shadow:0 16px 40px rgba(0,0,0,.45)
+}
+#elab-wave-panel.open{display:block}
+#elab-wave-panel canvas{width:100%;height:120px;background:#020617;border-radius:8px}
+#elab-class-panel,#elab-cam-panel,#elab-adapt-panel,#elab-twin-panel{
+  position:fixed;inset:0;z-index:12350;background:rgba(2,6,23,.85);
+  display:none;align-items:center;justify-content:center;padding:14px
+}
+#elab-class-panel.open,#elab-cam-panel.open,#elab-adapt-panel.open,#elab-twin-panel.open{display:flex}
+.elab-modal-card{
+  width:min(96vw,480px);max-height:90vh;overflow:auto;background:#0b1220;
+  border:1px solid rgba(34,211,238,.3);border-radius:18px;padding:16px
+}
+.elab-modal-card h3{color:#67e8f9;font-size:15px;font-weight:900;margin-bottom:8px}
+.elab-modal-card p,.elab-modal-card li{font-size:12px;color:#94a3b8;line-height:1.5}
+.elab-modal-card input,.elab-modal-card select,.elab-modal-card textarea{
+  width:100%;margin:6px 0;padding:8px;border-radius:8px;border:1px solid #334155;
+  background:#020617;color:#e2e8f0;font-size:12px
+}
+.elab-modal-card button{
+  margin-top:8px;margin-right:6px;padding:8px 12px;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer;
+  border:1px solid #334155;background:#0f172a;color:#e2e8f0
+}
+.elab-modal-card button.primary{background:linear-gradient(135deg,#0891b2,#22d3ee);color:#020617;border:none}
+#elab-fab-tools button.ng{font-size:14px}
+.elab-twin-stage{perspective:800px;margin:12px auto;width:160px;height:120px}
+.elab-twin-card{
+  width:100%;height:100%;border-radius:16px;
+  background:linear-gradient(145deg,#0f172a,#164e63);
+  border:1px solid rgba(34,211,238,.4);
+  transform:rotateY(-12deg) rotateX(8deg);
+  transition:transform .35s ease;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  box-shadow:0 20px 40px rgba(0,0,0,.4)
+}
+.elab-twin-card:hover{transform:rotateY(8deg) rotateX(4deg) scale(1.04)}
+.elab-twin-card .ic{font-size:36px}
+@media(max-width:640px){
+  #elab-nl-bar{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  #elab-wave-panel{top:auto;bottom:120px;right:8px;left:8px;width:auto}
+}

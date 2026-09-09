@@ -1,0 +1,16 @@
+
+#elab-learning-tools .elab-learning-tool{
+ width:100%;min-height:54px;padding:13px 16px;border-radius:14px;
+ background:#0f172a;border:1px solid rgba(34,211,238,.28);color:#67e8f9;
+ text-align:center;font-size:15px;font-weight:500;transition:.18s ease;
+}
+#elab-learning-tools .elab-learning-tool:hover{
+ background:#111c31;border-color:rgba(34,211,238,.62);
+ box-shadow:0 0 18px rgba(34,211,238,.08);
+}
+#elab-learning-tools .elab-learning-tool:active{transform:scale(.99)}
+#elab-learning-lab-toggle[aria-expanded="true"]{
+ border-color:rgba(34,211,238,.55);box-shadow:0 0 20px rgba(34,211,238,.07)
+}
+#elab-learning-lab-toggle[aria-expanded="true"] #elab-learning-lab-chevron{transform:rotate(180deg)}
+@media(max-width:640px){#elab-learning-tools .elab-learning-tool{min-height:58px;font-size:16px}}

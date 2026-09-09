@@ -1,0 +1,33 @@
+
+/* Fix inherited light-text theme inside white modal */
+#elab-safe-wifi-panel,
+#elab-safe-wifi-panel *,
+#elab-advanced-access,
+#elab-advanced-access *,
+#elab-advanced-educational-canvas,
+#elab-advanced-educational-canvas *{
+  color:#0f172a!important;
+  opacity:1!important;
+  filter:none!important;
+  text-shadow:none!important;
+}
+#elab-safe-wifi-panel .card,
+#elab-advanced-access .card,
+#elab-advanced-educational-canvas > div{
+  background:#ffffff!important;
+  color:#0f172a!important;
+  opacity:1!important;
+  filter:none!important;
+}
+#elab-safe-wifi-panel canvas,
+#elab-advanced-educational-canvas canvas{
+  background:#ffffff!important;
+  opacity:1!important;
+}
+#elab-safe-wifi-panel button,
+#elab-advanced-access button,
+#elab-advanced-educational-canvas button{
+  color:#0f172a!important;
+  background:#ffffff!important;
+  opacity:1!important;
+}

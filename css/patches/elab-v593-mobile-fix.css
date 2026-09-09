@@ -1,0 +1,71 @@
+
+/* Mobile floating UI — no overlap + safe areas */
+@media (max-width: 640px) {
+  #elab-smart-assistant-btn {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    right: max(12px, env(safe-area-inset-right, 0px)) !important;
+    width: 50px !important;
+    height: 50px !important;
+    z-index: 11995 !important;
+  }
+  #elab-smart-panel {
+    bottom: calc(130px + env(safe-area-inset-bottom, 0px)) !important;
+    right: max(10px, env(safe-area-inset-right, 0px)) !important;
+    left: max(10px, env(safe-area-inset-left, 0px)) !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: min(50vh, 360px) !important;
+    z-index: 11996 !important;
+  }
+  #elab-v575-status {
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    right: max(10px, env(safe-area-inset-right, 0px)) !important;
+    max-width: calc(100vw - 100px) !important;
+    font-size: 10px !important;
+    z-index: 11990 !important;
+  }
+  #elab-badges-pill {
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    left: max(10px, env(safe-area-inset-left, 0px)) !important;
+    z-index: 11990 !important;
+    font-size: 10px !important;
+    padding: 5px 9px !important;
+  }
+  #elab-health-panel {
+    bottom: calc(135px + env(safe-area-inset-bottom, 0px)) !important;
+    width: min(94vw, 360px) !important;
+    max-height: 45vh !important;
+    overflow: auto !important;
+    z-index: 12050 !important;
+  }
+  #elab-badge-toast {
+    top: calc(60px + env(safe-area-inset-top, 0px)) !important;
+    width: min(92vw, 300px) !important;
+  }
+  #elab-mini-tour {
+    padding: max(12px, env(safe-area-inset-top, 0px)) 12px max(12px, env(safe-area-inset-bottom, 0px)) !important;
+  }
+  #elab-mini-tour .mt-card {
+    width: 100% !important;
+    max-height: 85vh !important;
+    overflow: auto !important;
+  }
+  /* Larger touch targets for empty presets */
+  .elab-empty-btn {
+    min-height: 40px !important;
+    padding: 10px 14px !important;
+    font-size: 12px !important;
+  }
+  .sa-action {
+    min-height: 34px !important;
+    padding: 7px 12px !important;
+    font-size: 11px !important;
+  }
+}
+/* Prevent double-tap zoom on assistant */
+#elab-smart-assistant-btn,
+#elab-badges-pill,
+#elab-health-panel button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}

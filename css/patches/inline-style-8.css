@@ -1,0 +1,354 @@
+
+    @keyframes flowForward {
+      0% { stroke-dashoffset: 32; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes flowReverse {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 32; }
+    }
+    .animate-flow-fwd {
+      animation: flowForward 0.8s linear infinite;
+    }
+    .animate-flow-rev {
+      animation: flowReverse 0.8s linear infinite;
+    }
+    @keyframes motorSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-motor {
+      animation: motorSpin 0.3s linear infinite;
+    }
+    /* Grid Matrix Background for Sandbox */
+    .bg-grid-matrix {
+      background-size: 20px 20px;
+      background-image: radial-gradient(circle, rgba(56, 189, 248, 0.2) 1.5px, transparent 1.5px);
+    }
+    .draggable-card {
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0ea5e9;
+    }
+
+    /* v5.55 FINAL — popup lock: utility/information panels stay fixed and cannot be dragged. */
+    #comp-modal, #comp-edit-modal, #elab-v528-projects, #elab-v529-learning {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    #comp-modal > div, #comp-edit-modal > div,
+    #elab-v528-projects, #elab-v529-learning {
+      cursor: default !important;
+    }
+    #elab-v528-projects, #elab-v529-learning {
+      position: fixed !important;
+      transform: none !important;
+    }
+    #elab-v528-projects *, #elab-v529-learning * {
+      -webkit-user-drag: none;
+    }
+
+    /* v5.55 Physical Component Visual System — no heavy cards on the canvas */
+    .el-comp-card-v514{background:transparent!important;border:0!important;border-radius:0!important;padding:2px 4px!important;min-width:170px!important;box-shadow:none!important;backdrop-filter:none!important}
+    .el-comp-card-v514:hover{background:transparent!important;border:0!important;box-shadow:none!important}
+    .el-v514-stage{position:relative;width:170px;height:82px;display:flex;align-items:center;justify-content:center}
+    .el-v514-svg{width:170px;height:82px;overflow:visible;filter:drop-shadow(0 4px 5px rgba(0,0,0,.42))}
+    .el-v514-label{font:700 8px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#cbd5e1;letter-spacing:.3px}
+    .el-v514-pin{fill:#d1d5db;stroke:#0f172a;stroke-width:2}
+    .el-v514-body{fill:#334155;stroke:#cbd5e1;stroke-width:1.6}
+    .el-v514-metal{fill:#cbd5e1;stroke:#64748b;stroke-width:1.2}
+    .el-v514-wire{stroke:#94a3b8;stroke-width:3;stroke-linecap:round}
+    .el-v514-symbol{stroke:#e5e7eb;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .el-v514-live{filter:drop-shadow(0 0 10px rgba(52,211,153,.85)) drop-shadow(0 4px 5px rgba(0,0,0,.42))}
+    .el-v514-namebar{border:0!important;padding:0 2px 2px!important}
+    .el-v514-namebar span{color:#94a3b8!important;font-size:9px!important}
+    .el-v514-terminals{gap:38px!important;margin-top:-5px!important}
+    .el-v514-terminal-btn{width:12px!important;height:12px!important;border-radius:999px!important;background:#cbd5e1!important;border:2px solid #0f172a!important;box-shadow:0 0 0 1px rgba(148,163,184,.65),0 0 7px rgba(34,211,238,.12)!important}
+    .el-v514-terminal-btn:hover{transform:scale(1.35);background:#67e8f9!important}
+    .el-v515-physical{filter:drop-shadow(0 4px 4px rgba(0,0,0,.5))}
+    .el-v515-lead{stroke:#a8b0bb;stroke-width:3;stroke-linecap:round}
+    .el-v515-metal{fill:#c7ccd3;stroke:#6b7280;stroke-width:1.2}
+    .el-v515-band{fill:#e5e7eb}
+    .el-v515-glass{fill:rgba(148,163,184,.22);stroke:#cbd5e1;stroke-width:1.5}
+    .el-v515-copper{stroke:#b87333;stroke-width:3;stroke-linecap:round}
+    .el-v515-livebody{filter:drop-shadow(0 0 9px rgba(52,211,153,.95))}
+  
+    /* v5.55 FINAL FINAL integrated component terminals: pins are physically attached to the artwork */
+    .el-integrated-component-stage{overflow:visible;pointer-events:none}
+    .el-integrated-component-stage .el-v514-svg{position:absolute;left:0;top:0;width:178px;height:86px;pointer-events:none}
+    .el-integrated-terminal{position:absolute!important;width:10px!important;height:10px!important;transform:translate(-50%,-50%);border-radius:50%!important;background:#94a3b8!important;border:2px solid #0f172a!important;box-shadow:0 0 0 1px rgba(203,213,225,.7),0 0 5px rgba(34,211,238,.15)!important;padding:0!important;margin:0!important;pointer-events:auto;z-index:40;cursor:crosshair}
+    .el-integrated-terminal:hover{transform:translate(-50%,-50%) scale(1.35);background:#67e8f9!important;box-shadow:0 0 0 2px rgba(34,211,238,.35),0 0 10px rgba(34,211,238,.55)!important}
+    .el-integrated-terminal:active{background:#34d399!important}
+    .el-integrated-terminal.connected{background:#22d3ee!important;border-color:#ecfeff!important;box-shadow:0 0 0 2px rgba(34,211,238,.20),0 0 8px rgba(34,211,238,.45)!important}
+    .el-integrated-terminal.wire-anchor{background:#34d399!important;border-color:#ecfdf5!important;box-shadow:0 0 0 3px rgba(52,211,153,.25),0 0 12px rgba(52,211,153,.65)!important}
+
+    .canvas-comp-card{overflow:visible!important}
+
+    /* v5.55 FINAL FINAL: clearer terminal selection + wire anchor state */
+    .el-integrated-terminal.wire-anchor {
+      background:#22d3ee !important;
+      border-color:#e0f2fe !important;
+      box-shadow:0 0 0 3px rgba(34,211,238,.22),0 0 14px rgba(34,211,238,.75)!important;
+      transform:translate(-50%,-50%) scale(1.28)!important;
+    }
+
+    /* v5.55 — Real Component renderer visibility fix */
+    .el-real2d-wrap { width:100%; max-width:560px; min-height:210px; display:flex; align-items:center; justify-content:center; margin:0 auto; overflow:hidden; }
+    .el-real2d-svg { display:block !important; width:100% !important; max-width:520px !important; height:220px !important; min-height:180px !important; opacity:1 !important; visibility:visible !important; }
+    #modal-visual-area:has(.el-real2d-wrap) { min-height:220px; overflow:hidden; }
+
+/* v5.55 Smart Component Properties */
+.elab-v543-props{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.elab-v543-prop{padding:10px;border:1px solid rgba(148,163,184,.18);border-radius:10px;background:rgba(15,23,42,.55)}
+.elab-v543-prop label{display:block;font-size:11px;color:#94a3b8;margin-bottom:5px;font-weight:700}
+.elab-v543-prop input,.elab-v543-prop select{width:100%;border:1px solid rgba(148,163,184,.25);border-radius:7px;background:#0f172a;color:#e2e8f0;padding:7px 8px;font-size:12px;outline:none}
+.elab-v543-prop input:focus,.elab-v543-prop select:focus{border-color:#22d3ee;box-shadow:0 0 0 2px rgba(34,211,238,.12)}
+.elab-v543-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.2);color:#67e8f9;font-size:11px;font-weight:800}
+@media(max-width:520px){.elab-v543-props{grid-template-columns:1fr}}
+
+/* v5.55 — Simulate Circuit moved below Multimeter */
+#elab-v544-simulate-wrap{display:block;width:100%}
+#elab-v544-simulate-wrap button{width:100%;min-height:52px}
+
+/* v45 — Builder component list scrolls independently; Wire Color and Multimeter stay visible */
+#builder-left-panel{
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+#builder-left-panel .builder-component-library-scroll{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+/* Keep the control area outside the scrolling component library. */
+#builder-left-panel > .border-t{
+  flex:0 0 auto;
+}
+@media(max-width:1023px){
+  /* v62 — Give the component library a little more visible room on phones/tablets
+     without changing typography or the fixed Wire/Multimeter controls. */
+  #builder-left-panel{max-height:min(720px,82vh)!important}
+  #builder-left-panel .builder-component-library-scroll{max-height:48vh}
+}
+
+
+/* v58 — Professional Component Library */
+#builder-left-panel .builder-component-library-scroll{
+  position:relative;
+  padding-right:4px!important;
+  scrollbar-width:thin;
+  scrollbar-color:#334155 transparent;
+}
+#builder-left-panel .builder-component-library-scroll::-webkit-scrollbar{width:6px}
+#builder-left-panel .builder-component-library-scroll::-webkit-scrollbar-track{background:transparent}
+#builder-left-panel .builder-component-library-scroll::-webkit-scrollbar-thumb{background:#334155;border-radius:999px;border:2px solid #0f172a}
+.builder-library-sticky{
+  position:sticky;
+  top:0;
+  z-index:12;
+  padding:2px 0 8px;
+  background:linear-gradient(180deg,#0f172a 86%,rgba(15,23,42,.96));
+  box-shadow:0 8px 14px rgba(15,23,42,.7);
+}
+.builder-library-heading{min-height:34px}
+.builder-library-count{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  min-height:24px;padding:4px 8px;border-radius:999px;
+  border:1px solid rgba(34,211,238,.24);background:rgba(34,211,238,.08);
+  color:#67e8f9;font:700 9px/1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  white-space:nowrap;
+}
+.builder-library-search-wrap{position:relative;margin-bottom:8px}
+.builder-library-search-wrap>i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#64748b;pointer-events:none}
+.builder-library-search-wrap input{transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}
+.builder-library-search-wrap input:focus{background:#020617;box-shadow:0 0 0 3px rgba(34,211,238,.09)}
+.builder-search-clear{
+  position:absolute;right:7px;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;border-radius:7px;border:0;background:transparent;
+  color:#94a3b8;font-size:18px;line-height:1;cursor:pointer;
+}
+.builder-search-clear:hover{background:#1e293b;color:#e2e8f0}
+.builder-recent-section{padding:2px 0 4px}
+.builder-section-label{font:700 10px/1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#94a3b8;margin-bottom:7px;letter-spacing:.02em}
+#builder-recent-list button{transition:border-color .15s ease,background .15s ease,transform .12s ease}
+#builder-recent-list button:active{transform:scale(.98)}
+#builder-component-grid{padding-bottom:4px}
+#builder-component-grid .elab-comp-row{
+  position:relative;min-height:58px!important;padding:10px 42px 10px 12px!important;
+  border-color:#1e293b!important;background:linear-gradient(180deg,#020617,#030712)!important;
+  box-shadow:inset 0 1px 0 rgba(148,163,184,.035);
+}
+#builder-component-grid .elab-comp-row:hover{background:linear-gradient(180deg,#07101f,#020617)!important;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+#builder-component-grid .elab-comp-row .elab-comp-add{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:8px;border:1px solid rgba(34,211,238,.24);background:rgba(34,211,238,.07);
+  color:#67e8f9;font-size:16px;font-weight:800;
+}
+#builder-component-grid .elab-comp-meta{color:#64748b!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.builder-library-results{
+  position:sticky;bottom:0;z-index:8;margin-top:8px;padding:7px 2px 2px;
+  background:linear-gradient(0deg,#0f172a 72%,rgba(15,23,42,.92));
+  color:#64748b;text-align:center;font:600 9px/1.2 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+}
+@media(max-width:768px){
+  #builder-left-panel .builder-component-library-scroll{padding-right:1px!important}
+  .builder-library-sticky{padding-top:4px}
+  .builder-library-heading h4{font-size:12px}
+  .builder-library-heading p{font-size:8px}
+  .builder-library-count{min-height:22px;padding:4px 7px}
+  .elab-builder-chips{position:static!important;background:transparent!important;padding-top:2px!important;margin-bottom:0!important}
+  #builder-component-grid .elab-comp-row{min-height:64px!important}
+}
+
+/* v47 — Wire controls: compact, single-row and touch-safe on narrow screens. */
+.builder-wire-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  min-width:0;
+  flex-wrap:nowrap;
+}
+#wire-color-picker{
+  gap:6px!important;
+  flex:0 1 auto;
+  min-width:0;
+}
+.builder-wire-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-left:auto;
+  min-width:0;
+  flex:0 0 auto;
+}
+.builder-wire-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  min-height:30px;
+  padding:6px 9px;
+  border:1px solid #334155;
+  border-radius:8px;
+  background:#1e293b;
+  color:#67e8f9;
+  font:600 10px/1.1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  letter-spacing:.01em;
+  white-space:nowrap;
+  transition:border-color .2s ease,background .2s ease,transform .2s ease;
+}
+.builder-wire-action:hover{border-color:#22d3ee;background:#253348}
+.builder-wire-action:active{transform:translateY(1px)}
+.builder-wire-action:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
+.builder-wire-clear{color:#fda4af}
+.builder-wire-clear:hover{border-color:#fb7185;background:#2b2430}
+@media(max-width:520px){
+  .builder-wire-controls{gap:6px}
+  #wire-color-picker{gap:5px!important}
+  .builder-wire-actions{gap:5px}
+  .builder-wire-action{min-height:28px;padding:5px 7px;font-size:9px}
+  .builder-wire-action-label{display:none}
+}
+@media(max-width:390px){
+  .builder-wire-controls{gap:5px}
+  #wire-color-picker{gap:4px!important}
+  #wire-color-picker button{width:22px!important;height:22px!important}
+  .builder-wire-actions{gap:4px}
+  .builder-wire-action{padding:5px 6px;font-size:9px}
+  .builder-wire-clear-label{max-width:62px;overflow:hidden;text-overflow:ellipsis;display:inline-block}
+}
+
+/* v11 hardening, Phase 3 — visible keyboard focus state for placed Builder components */
+.canvas-comp-card:focus-visible{
+  outline:2px solid #22d3ee!important;
+  outline-offset:2px;
+  box-shadow:0 0 0 4px rgba(34,211,238,.25);
+}
+/* v5.55 — visible wire layer */
+#builder-canvas{position:relative}
+#builder-wire-svg{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  overflow:visible!important;
+  z-index:10!important;
+  pointer-events:auto!important;
+}
+#builder-wire-svg path{
+  visibility:visible!important;
+  display:block!important;
+  vector-effect:non-scaling-stroke;
+  pointer-events:stroke!important;
+  cursor:pointer;
+}
+#builder-wire-svg g{
+  visibility:visible!important;
+  pointer-events:auto!important;
+  cursor:pointer;
+}
+#elab-v545-simulate{min-height:42px;padding:8px 14px!important;font-size:12px!important}
+
+/* v5.55 — Undo / Redo / Simulate directly above Import */
+#elab-v546-sim-controls{width:100%;display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+#elab-v546-sim-controls button{min-height:44px}
+#elab-v546-sim-controls #elab-v545-simulate{padding:8px 14px!important;font-size:12px!important;flex:0 0 auto}
+#elab-v546-sim-controls button:not(#elab-v545-simulate){padding:8px 14px!important;flex:0 0 auto}
+@media(max-width:520px){
+  #elab-v546-sim-controls{gap:6px}
+  #elab-v546-sim-controls button:not(#elab-v545-simulate),
+  #elab-v546-sim-controls #elab-v545-simulate{padding-left:10px!important;padding-right:10px!important;font-size:12px!important}
+}
+
+/* v5.55 — restore missing controls */
+#elab-v547-sim-controls{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:100%!important;
+  margin:0 0 10px!important;
+  position:relative!important;
+  z-index:30!important;
+}
+#elab-v547-sim-controls button{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  min-height:44px!important;
+}
+#elab-v547-sim-controls #elab-v545-simulate{
+  flex:0 0 auto!important;
+  padding:8px 14px!important;
+  font-size:12px!important;
+}
+@media(max-width:520px){
+  #elab-v547-sim-controls{gap:6px!important}
+  #elab-v547-sim-controls button{
+    padding-left:10px!important;
+    padding-right:10px!important;
+    font-size:12px!important;
+  }
+}

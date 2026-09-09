@@ -1,0 +1,57 @@
+
+#elab-v528-projects{
+  position:fixed!important;inset:0!important;z-index:10000!important;
+  display:none;align-items:center;justify-content:center;padding:14px!important;
+  box-sizing:border-box;background:rgba(2,6,23,.78)!important;
+  backdrop-filter:blur(6px);
+}
+#elab-v528-projects.open{display:flex!important}
+#elab-v528-projects>.elab-project-shell,
+#elab-v528-projects>.elab-menu-modal-card{
+  width:min(94vw,620px);max-height:90vh;overflow:auto;
+  background:#0b1220!important;border:1px solid rgba(34,211,238,.38)!important;
+  border-radius:20px!important;padding:18px!important;
+  box-shadow:0 28px 90px rgba(0,0,0,.65),0 0 30px rgba(34,211,238,.06);
+}
+#elab-v528-projects .elab-menu-modal-head,
+#elab-v528-projects .phead{
+  display:flex!important;align-items:center;justify-content:space-between;gap:12px;
+  padding:4px 2px 15px;margin-bottom:12px;
+  border-bottom:1px solid rgba(148,163,184,.15);
+}
+#elab-v528-projects .elab-menu-modal-title,
+#elab-v528-projects .phead strong{font-size:22px;font-weight:800;color:#f1f5f9}
+#elab-v528-projects .elab-menu-modal-sub{font-size:12px;color:#64748b;margin-top:5px}
+#elab-v528-close{
+  width:48px;height:48px;border-radius:13px;
+  border:1px solid rgba(148,163,184,.22)!important;
+  background:#1e293b!important;color:#cbd5e1!important;font-size:32px!important;line-height:1;
+}
+#elab-v528-projects .elab-menu-list,
+#elab-v528-projects .pgrid{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
+#elab-v528-projects .elab-menu-item,
+#elab-v528-projects .pgrid button{
+  width:100%!important;min-height:64px;padding:15px 18px;box-sizing:border-box;
+  border-radius:16px!important;background:#0f172a!important;
+  border:1px solid rgba(34,211,238,.30)!important;color:#67e8f9!important;
+  font-size:17px!important;font-weight:600;text-align:center;
+}
+#elab-v528-projects .elab-menu-item:hover,
+#elab-v528-projects .pgrid button:hover{
+  background:#111c31!important;border-color:rgba(34,211,238,.68)!important;
+  box-shadow:0 0 20px rgba(34,211,238,.09)
+}
+#elab-v528-projects .elab-menu-detail,
+#elab-v528-projects .pstatus{margin-top:12px;padding:14px;border-radius:15px;background:#0f172a;color:#94a3b8}
+#elab-v528-projects input[data-project-name]{
+  width:100%!important;min-height:50px;box-sizing:border-box;margin:0 0 10px;
+  border:1px solid rgba(148,163,184,.20)!important;border-radius:12px!important;
+  background:#020617!important;color:#e2e8f0!important;padding:12px!important;font-size:15px;
+}
+@media(max-width:640px){
+  #elab-v528-projects{padding:10px!important}
+  #elab-v528-projects>.elab-project-shell,
+  #elab-v528-projects>.elab-menu-modal-card{width:100%;max-height:92vh;border-radius:17px!important;padding:14px!important}
+  #elab-v528-projects .elab-menu-modal-title{font-size:20px}
+  #elab-v528-projects .elab-menu-item,#elab-v528-projects .pgrid button{min-height:62px;font-size:16px!important}
+}

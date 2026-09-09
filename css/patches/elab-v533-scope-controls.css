@@ -1,0 +1,21 @@
+
+#elab-scope-panel .scope-mode-btn{
+  min-width:56px;padding:6px 13px;border:0;border-radius:7px;
+  color:#94a3b8;background:transparent;font:700 12px/1 monospace;
+}
+#elab-scope-panel .scope-mode-btn.active{
+  color:#020617;background:#22d3ee;box-shadow:0 0 14px rgba(34,211,238,.18);
+}
+#elab-scope-panel .scope-param{
+  display:flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid #1e293b;
+  border-radius:8px;background:#0f172a;color:#64748b;font:600 10px/1 monospace;
+}
+#elab-scope-panel .scope-param input{
+  width:62px;padding:4px 5px;border-radius:5px;border:1px solid #334155;
+  background:#020617;color:#e2e8f0;font:700 11px monospace;outline:none;
+}
+#elab-scope-panel .scope-param input:focus{border-color:#22d3ee}
+@media(max-width:640px){
+  #elab-scope-panel .scope-param{flex:1 1 120px}
+  #elab-scope-panel #scope-wave-readout{width:100%;margin-left:0}
+}

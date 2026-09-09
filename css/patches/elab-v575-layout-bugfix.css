@@ -1,0 +1,14 @@
+
+/* v5.75 bugfix: floating status must not cover Learning Lab controls on small screens. */
+#elab-status-pill, #elab-floating-status, .elab-status-pill, [data-elab-status-pill]{
+  max-width:calc(100vw - 28px);
+}
+@media(max-width:640px){
+  #elab-status-pill, #elab-floating-status, .elab-status-pill, [data-elab-status-pill]{
+    bottom:calc(10px + env(safe-area-inset-bottom))!important;
+    right:10px!important;
+    z-index:800!important;
+    font-size:11px!important;
+  }
+  #elab-learning-tools{padding-bottom:76px;}
+}

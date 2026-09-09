@@ -1,0 +1,193 @@
+
+/* ---------- v102: keep search + mic + Ask on one row, even on narrow phones ---------- */
+#elab-smart-panel .sa-ask-row{
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+}
+#elab-smart-panel .sa-ask-row input{
+  flex:1 1 0% !important;
+  min-width:0 !important;
+}
+#elab-smart-panel .elab-assistant-mic{
+  flex:0 0 auto !important;
+  width:38px !important;height:38px !important;
+  padding:0 !important;
+}
+#elab-smart-panel #elab-sa-ask{
+  flex:0 0 auto !important;
+  padding:0 14px !important;
+  white-space:nowrap !important;
+}
+@media (max-width:360px){
+  #elab-smart-panel .sa-ask-row{gap:5px !important}
+  #elab-smart-panel .elab-assistant-mic{width:34px !important;height:34px !important;font-size:14px !important}
+  #elab-smart-panel #elab-sa-ask{padding:0 10px !important;font-size:12.5px !important}
+  #elab-smart-panel .sa-ask-row input{padding:0 9px !important;font-size:12.5px !important}
+}
+
+/* ---------- v102: professional pass on answer / diagram result cards ---------- */
+#elab-smart-content .sa-answer,
+#elab-smart-content .sa-tip,
+#elab-smart-content .sa-coach{
+  padding:13px 14px !important;
+  font-size:13px !important;
+}
+#elab-smart-content .sa-answer > b:first-child,
+#elab-smart-content .sa-tip > b:first-child,
+#elab-smart-content .sa-coach > b:first-child{
+  display:block !important;
+  font-size:14.5px !important;
+  letter-spacing:.1px !important;
+  margin-bottom:4px !important;
+}
+#elab-smart-content .sc-label{
+  display:inline-flex !important;align-items:center !important;
+  font-size:9.5px !important;font-weight:800 !important;letter-spacing:.5px !important;
+  padding:3px 9px !important;border-radius:999px !important;margin:0 0 8px !important;
+  background:rgba(34,211,238,.12) !important;border:1px solid rgba(34,211,238,.3) !important;
+  color:var(--sa101-cyan-bright,#67e8f9) !important;font-family:var(--sa101-sans) !important;
+}
+#elab-smart-content .sa-diagram-badge{
+  font-family:var(--sa101-sans) !important;
+  font-weight:700 !important;
+  margin:8px 0 2px !important;
+}
+#elab-smart-content .sa-diagram-wrap{
+  margin-top:12px !important;
+  border-radius:14px !important;
+  padding:12px !important;
+}
+#elab-smart-content .sa-diagram-caption{
+  font-family:var(--sa101-sans) !important;
+  font-size:11px !important;
+  padding-top:8px !important;
+  margin-top:10px !important;
+  border-top:1px solid rgba(148,163,184,.14) !important;
+}
+#elab-smart-content .sa-diagram-actions{margin-top:10px !important}
+#elab-smart-content .sa-diagram-actions button{
+  font-family:var(--sa101-sans) !important;
+  border-radius:999px !important;
+  font-weight:600 !important;
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+#elab-smart-content .sa-diagram-actions button:hover{
+  box-shadow:0 0 0 1px rgba(34,211,238,.35),0 4px 10px rgba(0,0,0,.3) !important;
+  transform:translateY(-1px);
+}
+#elab-smart-content .sa-diagram-netlist{
+  border-radius:10px !important;
+  font-size:10px !important;
+  margin-top:10px !important;
+}
+#elab-smart-content .sa-diagram-confirm{
+  border-radius:14px !important;
+  padding:12px !important;
+  margin-top:10px !important;
+}
+#elab-smart-content .sa-diagram-confirm .cdc-title{
+  font-family:var(--sa101-sans) !important;
+  font-size:11px !important;
+}
+#elab-smart-content .sa-diagram-confirm .cdc-chip{
+  font-family:var(--sa101-sans) !important;
+  border-radius:999px !important;
+}
+#elab-smart-content .sa-diagram-confirm .cdc-actions button{
+  font-family:var(--sa101-sans) !important;
+  border-radius:999px !important;
+  font-weight:700 !important;
+}
+#elab-smart-content .sa-intent-badge{
+  font-family:var(--sa101-sans) !important;
+  margin-bottom:9px !important;
+}
+
+/* ---------- v102: welcome card (icon heading + capability tags) ---------- */
+#elab-smart-content .sa-welcome-head{
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:9px !important;
+  margin-bottom:11px !important;
+}
+#elab-smart-content .sa-welcome-icon{
+  flex:0 0 auto !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:26px !important;height:26px !important;
+  border-radius:8px !important;
+  background:rgba(34,211,238,.12) !important;
+  font-size:13px !important;
+  margin-top:1px !important;
+}
+#elab-smart-content .sa-welcome-head b{
+  font-size:15px !important;
+  line-height:1.4 !important;
+  padding-top:3px !important;
+}
+#elab-smart-content .sa-welcome-tags{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:6px !important;
+}
+#elab-smart-content .sa-welcome-tags span{
+  font-family:var(--sa101-sans) !important;
+  font-size:10.5px !important;
+  font-weight:600 !important;
+  padding:4px 10px !important;
+  border-radius:999px !important;
+  background:rgba(34,211,238,.08) !important;
+  border:1px solid rgba(34,211,238,.22) !important;
+  color:var(--sa101-cyan-bright,#67e8f9) !important;
+}
+
+/* ---------- v102: crisper PRO badge ---------- */
+#elab-smart-panel .sa-title .pro-tag{
+  opacity:1 !important;
+  font-size:9.5px !important;
+  border:1px solid rgba(34,211,238,.28) !important;
+}
+
+/* ---------- v102: avatar badge header icon (replaces the ✦ glyph + dot) ---------- */
+#elab-smart-panel .sa-title{gap:9px !important}
+#elab-smart-panel .sa-title::before{display:none !important}
+.assistant-avatar-badge {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  background: rgba(0, 229, 255, 0.08);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.bot-avatar-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  animation: cuteBotMove 6s infinite ease-in-out;
+}
+/* Har 6 second me ek cute sa chhota nod/tilt */
+@keyframes cuteBotMove {
+  0%, 80%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  85% { transform: translateY(-2px) rotate(-8deg) scale(1.08); }
+  90% { transform: translateY(1px) rotate(6deg) scale(1.08); }
+  95% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+.online-indicator{
+  position:absolute;
+  right:-1px;bottom:-1px;
+  width:9px;height:9px;
+  border-radius:50%;
+  background:#34d399;
+  border:2px solid #0a0f1c;
+  box-shadow:0 0 5px 1px rgba(52,211,153,.7);
+}
+#elab-smart-panel .header-title{
+  font-family:var(--sa101-sans) !important;
+  font-weight:700 !important;
+}

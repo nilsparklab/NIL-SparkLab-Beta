@@ -1,0 +1,12 @@
+
+/* v101: normalized OK/WARNING/ERROR circuit-verification visual state.
+   Applied to the #builder-status status bar as a single authoritative
+   layer on top of the existing NIL SparkLab visual language — no panel
+   redesign, just a subtle border/glow per level. */
+#builder-status{transition:border-color .2s ease,box-shadow .2s ease;border-color:rgba(30,41,59,1);}
+#builder-status.is-verified-ok{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 1px rgba(52,211,153,.12) inset;}
+#builder-status.is-verified-warning{border-color:rgba(252,211,77,.55);box-shadow:0 0 0 1px rgba(252,211,77,.12) inset;}
+#builder-status.is-verified-error{border-color:rgba(244,63,94,.55);box-shadow:0 0 0 1px rgba(244,63,94,.12) inset;}
+#elab-v565-smart-panel.is-verified-ok{border-color:rgba(52,211,153,.35);}
+#elab-v565-smart-panel.is-verified-warning{border-color:rgba(252,211,77,.35);}
+#elab-v565-smart-panel.is-verified-error{border-color:rgba(244,63,94,.35);}

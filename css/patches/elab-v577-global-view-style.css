@@ -1,0 +1,9 @@
+
+#elab-v576-component-view-style .el-v576-viewbar { display:none!important; }
+#elab-v577-view-toggle { white-space:nowrap; }
+@media (max-width:640px){
+  #elab-v547-sim-controls{display:flex!important;align-items:center!important}
+  #elab-v577-view-toggle{flex:1 1 auto}
+  #elab-v600-clear-canvas{margin-left:auto;flex:0 0 auto}
+  #elab-v545-simulate{flex:1 1 auto}
+}

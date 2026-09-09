@@ -1,0 +1,11 @@
+
+.sa-diagram-wrap{margin-top:10px;border:1px solid rgba(34,211,238,.28);border-radius:12px;background:#020617;padding:10px;overflow:auto}
+.sa-diagram-wrap svg{display:block;width:100%;max-width:100%;height:auto;margin:0 auto;min-height:140px}
+.sa-diagram-caption{font-size:10px;color:#94a3b8;margin-top:8px;line-height:1.45}
+.sa-diagram-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sa-diagram-actions button{
+  font-size:10px;font-weight:700;padding:6px 10px;border-radius:8px;cursor:pointer;
+  border:1px solid rgba(34,211,238,.35);background:rgba(8,145,178,.15);color:#67e8f9
+}
+.sa-diagram-actions button:active{transform:scale(.97)}
+.sa-answer pre.sa-ascii{font-size:10px;line-height:1.35;color:#a5f3fc;white-space:pre-wrap;margin:8px 0 0}

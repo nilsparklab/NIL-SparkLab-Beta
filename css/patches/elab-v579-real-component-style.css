@@ -1,0 +1,8 @@
+
+.el-v515-physical{filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+.el-v515-lead{stroke:#b8c7d9;stroke-width:3;stroke-linecap:round}
+.el-v515-metal{stroke:#b8c7d9}
+.el-v515-pin{fill:#22d3ee;stroke:#e0f2fe;stroke-width:1.5}
+.el-v515-glass{fill:rgba(226,232,240,.13);stroke:#cbd5e1;stroke-width:1.5}
+.el-v514-label{fill:#94a3b8;font:700 7px ui-monospace,monospace;letter-spacing:.2px}
+.el-v515-physical text{font-family:ui-monospace,monospace}
